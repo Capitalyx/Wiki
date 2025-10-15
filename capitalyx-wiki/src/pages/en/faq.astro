@@ -1,0 +1,167 @@
+---
+import Layout from "../../layouts/Layout.astro"
+---
+
+<Layout title="Frequently Asked Questions" description="Various questions answered">
+    <section class="breadcrumb">
+        <div class="container">
+            <nav class="breadcrumb-nav">
+                <div class="breadcrumb-item">
+                    <i class="fas fa-home breadcrumb-icon"></i>
+                    <a href="index.html">Home</a>
+                </div>
+                <span class="breadcrumb-separator">
+                    <i class="fas fa-chevron-right"></i>
+                </span>
+                <div class="breadcrumb-item active">
+                    <i class="fas fa-question-circle breadcrumb-icon"></i>
+                    <span>FAQ</span>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <section class="page-hero">
+            <div class="container">
+                <h1 class="page-title">
+                    <i class="fas fa-question-circle"></i>
+                    Frequently Asked Questions
+                </h1>
+                <p class="page-subtitle">Quickly find the answers to your questions</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <div class="faq-grid">
+                    <div class="faq-category">
+                        <h2><i class="fas fa-play"></i> Getting Started</h2>
+                        <div class="faq-list">
+                            <div class="faq-item">
+                                <h3>How can I join the server?</h3>
+                                <p>You need FiveM and GTA V. Search for "Capitalyx" in the FiveM server list.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h3>Do I need an application to play?</h3>
+                                <p>No, the server is open access. You can connect directly and create your character.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h3>How many characters can I create?</h3>
+                                <p>You can create one character per FiveM account.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-category">
+                        <h2><i class="fas fa-gamepad"></i> Gameplay</h2>
+                        <div class="faq-list">
+                            <div class="faq-item">
+                                <h3>What is a tycoon server?</h3>
+                                <p>A server focused on business management, jobs, and economy. You can build your business empire in a relaxed atmosphere.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h3>Can I play with my friends?</h3>
+                                <p>Absolutely! Cooperation and teamwork are encouraged. You can start businesses together or trade resources.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h3>How do I earn money?</h3>
+                                <p>Pick a job you enjoy, grow your business, and trade with other players.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-category">
+                        <h2><i class="fas fa-cog"></i> Technical</h2>
+                        <div class="faq-list">
+                            <div class="faq-item">
+                                <h3>The server is lagging, what should I do?</h3>
+                                <p>Check your internet connection. If the issue persists, report it on Discord with detailed information.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h3>I lost my items/money, what should I do?</h3>
+                                <p>Contact an administrator on Discord with proof (screenshots, videos) and details of the incident.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h3>How do I report a bug?</h3>
+                                <p>Use the #bug-reports channel on Discord with a detailed description and evidence if possible.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-category">
+                        <h2><i class="fas fa-shield-alt"></i> Rules & Sanctions</h2>
+                        <div class="faq-list">
+                            <div class="faq-item">
+                                <h3>What happens if I break the rules?</h3>
+                                <p>Depending on the severity: warning, temporary kick, or permanent ban. Check the Rules page for details.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h3>How can I appeal a sanction?</h3>
+                                <p>Open a ticket on Discord in the appropriate section with your arguments and evidence.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h3>Can I appeal a ban?</h3>
+                                <p>Yes, after a reflection period. Use the Discord ticket system to submit your appeal.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-category">
+                        <h2><i class="fas fa-users"></i> Community</h2>
+                        <div class="faq-list">
+                            <div class="faq-item">
+                                <h3>How can I join the Discord?</h3>
+                                <p>The Discord link is available in-game with the /discord command or on our website.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h3>Are there community events?</h3>
+                                <p>Yes! Economic events, production contests, special markets, and community challenges are regularly organized.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h3>How do I create an alliance/company?</h3>
+                                <p>You can create or join a faction/company to gain XP bonuses and other small advantages to help your progress.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h3>What are the benefits of factions?</h3>
+                                <p>Factions mainly provide XP bonuses, slight economic benefits, and a supportive group environment.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-category">
+                        <h2><i class="fas fa-dollar-sign"></i> Jobs & Economy</h2>
+                        <div class="faq-list">
+                            <div class="faq-item">
+                                <h3>What jobs are available?</h3>
+                                <p>Farmer, miner, lumberjack, trader, transporter, and many more! Each job has its own mechanics and profit opportunities.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h3>Can players trade resources?</h3>
+                                <p>Yes! Trading and cooperation are core parts of the gameplay. You can sell your products or help other players with your resources.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h3>How does the economy system work?</h3>
+                                <p>The server economy is fixed with set prices and mechanics. Focus on optimizing your production and job efficiency.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-help">
+                    <h2><i class="fas fa-life-ring"></i> Need More Help?</h2>
+                    <p>If you can’t find the answer to your question here, feel free to:</p>
+                    <ul>
+                        <li>Ask your question on Discord</li>
+                        <li>Contact a staff member in-game</li>
+                        <li>Open a support ticket</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    @import url("../../styles/faq.css");
+</style>

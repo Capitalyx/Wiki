@@ -1,5 +1,7 @@
 ---
 // src/layouts/Layout.astro
+import { ViewTransitions } from 'astro:transitions';
+
 export interface Props {
   title: string;
   description?: string;
@@ -22,6 +24,7 @@ const langPrefix = lang === 'fr' ? '' : `/${lang}`;
     <meta name="description" content={description} />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <ViewTransitions />
     <script src="/js/search-data.js" is:inline></script>
   </head>
   <body>
@@ -101,7 +104,7 @@ const langPrefix = lang === 'fr' ? '' : `/${lang}`;
     </header>
 
     <!-- Main Content -->
-    <main class="main-content">
+    <main class="main-content" transition:animate="slide">
       <slot />
     </main>
 
@@ -439,6 +442,7 @@ const langPrefix = lang === 'fr' ? '' : `/${lang}`;
 </style>
 
     <script>
+      // @ts-nocheck
       // Fonctions pour la recherche
       function openSearchModal() {
         console.log('openSearchModal() appelée');
@@ -638,7 +642,7 @@ const langPrefix = lang === 'fr' ? '' : `/${lang}`;
       }
 
       // Navigation mobile
-      document.addEventListener('DOMContentLoaded', function() {
+      function initializeApp() {
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
 
@@ -856,7 +860,14 @@ const langPrefix = lang === 'fr' ? '' : `/${lang}`;
             window.closeTOCModal();
           }
         });
-      });
+      }
+
+      // Initialiser au chargement initial
+      document.addEventListener('DOMContentLoaded', initializeApp);
+      
+      // Ré-initialiser après chaque transition de page Astro
+      document.addEventListener('astro:page-load', initializeApp);
+
     </script>
   </body>
 </html>

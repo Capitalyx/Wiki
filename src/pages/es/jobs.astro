@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Métiers - Capitalyx Wiki</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="stylesheet" href="/css/root.css">
-    <link rel="stylesheet" href="/css/jobs.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-</head>
-<body>
-    <!-- Header will be loaded here -->
-    <div id="header-container"></div>
+---
+import Layout from "../../layouts/Layout.astro"
+---
+
+<Layout title="Trabajos" description="Trabajos disponibles en el servidor">
 
     <!-- Breadcrumbs -->
     <section class="breadcrumb">
@@ -125,8 +116,8 @@
                         <a href="/es/commands" class="nav-link-card">
                             <i class="fas fa-terminal"></i>
                             <div>
-                                <h4>Commandes</h4>
-                                <p>Commandes utiles pour les métiers</p>
+                                <h4>Comandos</h4>
+                                <p>Comandos útiles para trabajos</p>
                             </div>
                         </a>
                     </div>
@@ -134,11 +125,8 @@
             </div>
         </section>
     </main>
+</Layout>
 
-    <!-- Footer will be loaded here -->
-    <div id="footer-container"></div>
-
-    <script src="js/components.js" is:inline></script>
-    <script src="js/search.js" is:inline></script>
-</body>
-</html>
+<style>
+    @import url("../../styles/jobs.css");
+</style>

@@ -130,171 +130,123 @@
     color: #22c55e;
 }
 
-/* Carte Camion - Thème orange */
-.job-card:nth-child(2) {
-    border-color: rgba(251, 146, 60, 0.2);
-}
-
-.job-card:nth-child(2):hover {
-    border-color: #fb923c;
-    box-shadow: 0 10px 30px rgba(251, 146, 60, 0.15);
-}
-
-.job-card:nth-child(2) .job-icon {
-    color: #fb923c;
-    animation: truckPulse 3s ease-in-out infinite;
-}
-
-.job-card:nth-child(2):hover .job-icon {
-    transform: scale(1.1);
-    filter: drop-shadow(0 4px 8px rgba(251, 146, 60, 0.3));
-}
-
-.job-card:nth-child(2) .job-title {
-    color: #fb923c;
-}
-
 /* Carte Hélicoptère - Thème violet */
-.job-card:nth-child(3) {
+.job-card:nth-child(2) {
     border-color: rgba(168, 85, 247, 0.2);
 }
 
-.job-card:nth-child(3):hover {
+.job-card:nth-child(2):hover {
     border-color: #a855f7;
     box-shadow: 0 10px 30px rgba(168, 85, 247, 0.15);
 }
 
-.job-card:nth-child(3) .job-icon {
+.job-card:nth-child(2) .job-icon {
     color: #a855f7;
     animation: helicopterPulse 3s ease-in-out infinite;
 }
 
-.job-card:nth-child(3):hover .job-icon {
+.job-card:nth-child(2):hover .job-icon {
     transform: scale(1.1) rotate(5deg);
     filter: drop-shadow(0 4px 8px rgba(168, 85, 247, 0.3));
 }
 
-.job-card:nth-child(3) .job-title {
+.job-card:nth-child(2) .job-title {
     color: #a855f7;
 }
 
-/* Carte Avion - Thème bleu ciel */
-.job-card:nth-child(4) {
-    border-color: rgba(14, 165, 233, 0.2);
-}
-
-.job-card:nth-child(4):hover {
-    border-color: #0ea5e9;
-    box-shadow: 0 10px 30px rgba(14, 165, 233, 0.15);
-}
-
-.job-card:nth-child(4) .job-icon {
-    color: #0ea5e9;
-    animation: planePulse 3s ease-in-out infinite;
-}
-
-.job-card:nth-child(4):hover .job-icon {
-    transform: scale(1.1) rotate(-5deg);
-    filter: drop-shadow(0 4px 8px rgba(14, 165, 233, 0.3));
-}
-
-.job-card:nth-child(4) .job-title {
-    color: #0ea5e9;
-}
-
 /* Carte EMS - Thème rouge */
-.job-card:nth-child(5) {
+.job-card:nth-child(3) {
     border-color: rgba(239, 68, 68, 0.2);
 }
 
-.job-card:nth-child(5):hover {
+.job-card:nth-child(3):hover {
     border-color: #ef4444;
     box-shadow: 0 10px 30px rgba(239, 68, 68, 0.15);
 }
 
-.job-card:nth-child(5) .job-icon {
+.job-card:nth-child(3) .job-icon {
     color: #ef4444;
     animation: emsPulse 3s ease-in-out infinite;
 }
 
-.job-card:nth-child(5):hover .job-icon {
+.job-card:nth-child(3):hover .job-icon {
     transform: scale(1.1);
     filter: drop-shadow(0 4px 8px rgba(239, 68, 68, 0.3));
 }
 
-.job-card:nth-child(5) .job-title {
+.job-card:nth-child(3) .job-title {
     color: #ef4444;
 }
 
 /* Carte Taxi - Thème jaune/orange */
-.job-card:nth-child(6) {
+.job-card:nth-child(4) {
     border-color: rgba(245, 158, 11, 0.2);
 }
 
-.job-card:nth-child(6):hover {
+.job-card:nth-child(4):hover {
     border-color: #f59e0b;
     box-shadow: 0 10px 30px rgba(245, 158, 11, 0.15);
 }
 
-.job-card:nth-child(6) .job-icon {
+.job-card:nth-child(4) .job-icon {
     color: #f59e0b;
     animation: taxiPulse 3s ease-in-out infinite;
 }
 
-.job-card:nth-child(6):hover .job-icon {
+.job-card:nth-child(4):hover .job-icon {
     transform: scale(1.1);
     filter: drop-shadow(0 4px 8px rgba(245, 158, 11, 0.3));
 }
 
-.job-card:nth-child(6) .job-title {
+.job-card:nth-child(4) .job-title {
     color: #f59e0b;
 }
 
 /* Carte Courier - Thème cyan/turquoise */
-.job-card:nth-child(7) {
+.job-card:nth-child(5) {
     border-color: rgba(6, 182, 212, 0.2);
 }
 
-.job-card:nth-child(7):hover {
+.job-card:nth-child(5):hover {
     border-color: #06b6d4;
     box-shadow: 0 10px 30px rgba(6, 182, 212, 0.15);
 }
 
-.job-card:nth-child(7) .job-icon {
+.job-card:nth-child(5) .job-icon {
     color: #06b6d4;
     animation: courierPulse 3s ease-in-out infinite;
 }
 
-.job-card:nth-child(7):hover .job-icon {
+.job-card:nth-child(5):hover .job-icon {
     transform: scale(1.1);
     filter: drop-shadow(0 4px 8px rgba(6, 182, 212, 0.3));
 }
 
-.job-card:nth-child(7) .job-title {
+.job-card:nth-child(5) .job-title {
     color: #06b6d4;
 }
 
 /* Carte Train - Thème bleu marine */
-.job-card:nth-child(8) {
+.job-card:nth-child(6) {
     border-color: rgba(30, 64, 175, 0.2);
 }
 
-.job-card:nth-child(8):hover {
+.job-card:nth-child(6):hover {
     border-color: #1e40af;
     box-shadow: 0 10px 30px rgba(30, 64, 175, 0.15);
 }
 
-.job-card:nth-child(8) .job-icon {
+.job-card:nth-child(6) .job-icon {
     color: #1e40af;
     animation: trainPulse 3s ease-in-out infinite;
 }
 
-.job-card:nth-child(8):hover .job-icon {
+.job-card:nth-child(6):hover .job-icon {
     transform: scale(1.1);
     filter: drop-shadow(0 4px 8px rgba(30, 64, 175, 0.3));
 }
 
-.job-card:nth-child(8) .job-title {
+.job-card:nth-child(6) .job-title {
     color: #1e40af;
 }
 

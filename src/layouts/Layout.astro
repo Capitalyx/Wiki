@@ -115,7 +115,7 @@ const langPrefix = lang === 'fr' ? '' : `/${lang}`;
               <span class="footer-logo-text">Capitalyx</span>
             </div>
             <p class="footer-description">
-              Votre wiki complet pour maîtriser l'expérience Capitalyx et développer votre empire commercial.
+              {lang === 'en' ? 'Your complete wiki to master the Capitalyx experience and grow your business empire.' : lang === 'es' ? 'Tu wiki completo para dominar la experiencia de Capitalyx y hacer crecer tu imperio empresarial.' : 'Votre wiki complet pour maîtriser l\'expérience Capitalyx et développer votre empire commercial.'}
             </p>
           </div>
 
@@ -151,10 +151,10 @@ const langPrefix = lang === 'fr' ? '' : `/${lang}`;
 
         <div class="footer-bottom">
           <p class="footer-copyright">
-            © 2025 Capitalyx. Tous droits réservés.
+            © 2025 Capitalyx. {lang === 'en' ? 'All rights reserved.' : lang === 'es' ? 'Todos los derechos reservados.' : 'Tous droits réservés.'}
           </p>
           <p>
-            Made by Arkyan & SmashBalloon
+            {lang === 'en' ? 'Made by' : lang === 'es' ? 'Hecho por' : 'Créé par'} Arkyan & SmashBalloon
           </p>
         </div>
         </div>
@@ -166,8 +166,8 @@ const langPrefix = lang === 'fr' ? '' : `/${lang}`;
       <div class="search-modal-backdrop" onclick="closeSearchModal()"></div>
       <div class="search-modal-content">
         <div class="search-modal-header">
-          <h3>Rechercher dans le wiki</h3>
-          <button class="search-modal-close" onclick="closeSearchModal()" aria-label="Fermer la recherche" title="Fermer la recherche">
+          <h3>{lang === 'en' ? 'Search in the wiki' : lang === 'es' ? 'Buscar en el wiki' : 'Rechercher dans le wiki'}</h3>
+          <button class="search-modal-close" onclick="closeSearchModal()" aria-label="{lang === 'en' ? 'Close search' : lang === 'es' ? 'Cerrar búsqueda' : 'Fermer la recherche'}" title="{lang === 'en' ? 'Close search' : lang === 'es' ? 'Cerrar búsqueda' : 'Fermer la recherche'}">
             <i class="fas fa-times"></i>
           </button>
         </div>
@@ -175,19 +175,19 @@ const langPrefix = lang === 'fr' ? '' : `/${lang}`;
         <div class="search-container">
           <!-- Filtres de recherche -->
           <div class="search-filters">
-            <button class="filter-btn active" data-filter="all">Tout</button>
-            <button class="filter-btn" data-filter="rules">Règlement</button>
-            <button class="filter-btn" data-filter="guides">Guides</button>
-            <button class="filter-btn" data-filter="jobs">Métiers</button>
-            <button class="filter-btn" data-filter="commands">Commandes</button>
-            <button class="filter-btn" data-filter="faq">FAQ</button>
+            <button class="filter-btn active" data-filter="all">{lang === 'en' ? 'All' : lang === 'es' ? 'Todo' : 'Tout'}</button>
+            <button class="filter-btn" data-filter="rules">{lang === 'en' ? 'Rules' : lang === 'es' ? 'Reglas' : 'Règlement'}</button>
+            <button class="filter-btn" data-filter="guides">{lang === 'en' ? 'Guides' : lang === 'es' ? 'Guías' : 'Guides'}</button>
+            <button class="filter-btn" data-filter="jobs">{lang === 'en' ? 'Jobs' : lang === 'es' ? 'Trabajos' : 'Métiers'}</button>
+            <button class="filter-btn" data-filter="commands">{lang === 'en' ? 'Commands' : lang === 'es' ? 'Comandos' : 'Commandes'}</button>
+            <button class="filter-btn" data-filter="faq">{lang === 'en' ? 'FAQ' : lang === 'es' ? 'Preguntas frecuentes' : 'FAQ'}</button>
           </div>
 
           <!-- Barre de recherche -->
           <div class="search-box">
             <i class="fas fa-search search-icon"></i>
-            <input type="text" class="search-input" placeholder="Rechercher dans le wiki... (ex: règles métier, commandes, etc.)" id="searchInput" />
-            <button class="search-clear" id="searchClear" title="Effacer la recherche" aria-label="Effacer la recherche">
+            <input type="text" class="search-input" placeholder={lang === 'en' ? 'Search in the wiki... (ex: rules, commands)' : lang === 'es' ? 'Buscar en el wiki... (ej: reglas, comandos)' : 'Rechercher dans le wiki... (ex: règles métier, commandes, etc.)'} id="searchInput" />
+            <button class="search-clear" id="searchClear" title={lang === 'en' ? 'Clear search' : lang === 'es' ? 'Borrar búsqueda' : 'Effacer la recherche'} aria-label={lang === 'en' ? 'Clear search' : lang === 'es' ? 'Borrar búsqueda' : 'Effacer la recherche'}>
               <i class="fas fa-times"></i>
             </button>
           </div>
@@ -198,9 +198,9 @@ const langPrefix = lang === 'fr' ? '' : `/${lang}`;
 
         <!-- Raccourcis clavier -->
         <div class="search-shortcuts">
-          <span class="shortcut"><kbd>↑</kbd><kbd>↓</kbd> pour naviguer</span>
-          <span class="shortcut"><kbd>Enter</kbd> pour sélectionner</span>
-          <span class="shortcut"><kbd>Esc</kbd> pour fermer</span>
+          <span class="shortcut"><kbd>↑</kbd><kbd>↓</kbd> {lang === 'en' ? 'to navigate' : lang === 'es' ? 'para navegar' : 'pour naviguer'}</span>
+          <span class="shortcut"><kbd>Enter</kbd> {lang === 'en' ? 'to select' : lang === 'es' ? 'para seleccionar' : 'pour sélectionner'}</span>
+          <span class="shortcut"><kbd>Esc</kbd> {lang === 'en' ? 'to close' : lang === 'es' ? 'para cerrar' : 'pour fermer'}</span>
         </div>
       </div>
     </div>

@@ -139,13 +139,6 @@ window.searchData = [
         keywords: ["train", "conducteur", "ferroviaire", "transport"]
     },
     {
-        title: "Pilote d'Avion",
-        category: "jobs",
-        description: "Transport aérien de passagers et de fret.",
-        url: "/jobs/avionpilot",
-        keywords: ["avion", "pilote", "aviation", "vol", "aérien"]
-    },
-    {
         title: "Pilote d'Hélicoptère",
         category: "jobs",
         description: "Missions en hélicoptère et transport spécialisé.",

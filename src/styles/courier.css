@@ -324,43 +324,15 @@
     font-size: 1.1rem;
 }
 
-/* Navigation */
-.job-navigation {
-    padding: 3rem 0;
-    text-align: center;
-}
-
-.btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.8rem;
-    background: var(--card-bg);
-    color: var(--text-color);
-    text-decoration: none;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    font-weight: 600;
-    transition: var(--transition);
-}
-
-.btn-secondary:hover {
-    background: var(--dark-tertiary);
-    border-color: #06b6d4;
-    color: #06b6d4;
-    transform: translateY(-2px);
-}
-
-.btn-secondary i {
-    font-size: 1.1rem;
-}
-
 /* Animation */
 @keyframes courierPulse {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
         color: #06b6d4;
     }
+
     50% {
         transform: scale(1.05);
         color: #0891b2;
@@ -374,48 +346,48 @@
         text-align: center;
         gap: 1.5rem;
     }
-    
+
     .page-main-title {
         font-size: 2.2rem;
     }
-    
+
     .page-description {
         font-size: 1rem;
     }
-    
+
     .steps-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
-    
+
     .location-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
-    
+
     .table-header,
     .table-row {
         grid-template-columns: 1fr;
         gap: 0.5rem;
         text-align: left;
     }
-    
+
     .rewards-table .table-header,
     .rewards-table .table-row {
         grid-template-columns: 1fr;
     }
-    
-    .table-header > div,
-    .table-row > div {
+
+    .table-header>div,
+    .table-row>div {
         padding: 0.5rem;
         border-bottom: 1px solid var(--border-color);
     }
-    
-    .table-header > div:last-child,
-    .table-row > div:last-child {
+
+    .table-header>div:last-child,
+    .table-row>div:last-child {
         border-bottom: none;
     }
-    
+
     .section-title {
         font-size: 1.8rem;
         flex-direction: column;
@@ -427,11 +399,11 @@
     .job-section {
         padding: 2rem 0;
     }
-    
+
     .step-item {
         padding: 1.5rem;
     }
-    
+
     .location-content {
         padding: 1rem;
     }

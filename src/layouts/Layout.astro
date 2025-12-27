@@ -60,11 +60,6 @@ const langPrefix = lang === 'fr' ? '' : `/${lang}`;
               </a>
             </li>
             <li class="nav-item">
-              <a href={`${langPrefix}/commands`} class="nav-link">
-                {lang === 'en' ? 'Commands' : lang === 'es' ? 'Comandos' : 'Commandes'}
-              </a>
-            </li>
-            <li class="nav-item">
               <a href={`${langPrefix}/faq`} class="nav-link">FAQ</a>
             </li>
           </ul>
@@ -81,15 +76,15 @@ const langPrefix = lang === 'fr' ? '' : `/${lang}`;
                 <i class="fas fa-chevron-down"></i>
               </button>
               <div class="lang-dropdown" id="langDropdown">
-                <a href="/" class="lang-option" data-lang="fr">
+                <a href="#" class="lang-option" data-lang="fr" onclick="switchLanguage('fr', event)">
                   <img src="/assets/img/flags/france.png" alt="France" class="flag-img" />
                   {lang === 'en' ? 'French' : lang === 'es' ? 'Francés' : 'Français'}
                 </a>
-                <a href="/en/" class="lang-option" data-lang="en">
+                <a href="#" class="lang-option" data-lang="en" onclick="switchLanguage('en', event)">
                   <img src="/assets/img/flags/usuk.png" alt="English" class="flag-img" />
                   {lang === 'en' ? 'English' : lang === 'es' ? 'Inglés' : 'Anglais'}
                 </a>
-                <a href="/es/" class="lang-option" data-lang="es">
+                <a href="#" class="lang-option" data-lang="es" onclick="switchLanguage('es', event)">
                   <img src="/assets/img/flags/spain.png" alt="Espagnol" class="flag-img" />
                   {lang === 'en' ? 'Spanish' : lang === 'es' ? 'Español' : 'Espagnol'}
                 </a>
@@ -142,9 +137,9 @@ const langPrefix = lang === 'fr' ? '' : `/${lang}`;
           <div class="footer-section">
             <h4 class="footer-title">{lang === 'en' ? 'Languages' : lang === 'es' ? 'Idiomas' : 'Langues'}</h4>
             <ul class="footer-links">
-              <li><a href="#" onclick="switchLanguage('fr')" class="footer-link">{lang === 'en' ? 'French' : lang === 'es' ? 'Francés' : 'Français'}</a></li>
-              <li><a href="#" onclick="switchLanguage('en')" class="footer-link">{lang === 'en' ? 'English' : lang === 'es' ? 'Inglés' : 'Anglais'}</a></li>
-              <li><a href="#" onclick="switchLanguage('es')" class="footer-link">{lang === 'en' ? 'Spanish' : lang === 'es' ? 'Español' : 'Espagnol'}</a></li>
+              <li><a href="#" onclick="switchLanguage('fr', event)" class="footer-link">{lang === 'en' ? 'French' : lang === 'es' ? 'Francés' : 'Français'}</a></li>
+              <li><a href="#" onclick="switchLanguage('en', event)" class="footer-link">{lang === 'en' ? 'English' : lang === 'es' ? 'Inglés' : 'Anglais'}</a></li>
+              <li><a href="#" onclick="switchLanguage('es', event)" class="footer-link">{lang === 'en' ? 'Spanish' : lang === 'es' ? 'Español' : 'Espagnol'}</a></li>
             </ul>
           </div>
         </div>
@@ -179,7 +174,6 @@ const langPrefix = lang === 'fr' ? '' : `/${lang}`;
             <button class="filter-btn" data-filter="rules">{lang === 'en' ? 'Rules' : lang === 'es' ? 'Reglas' : 'Règlement'}</button>
             <button class="filter-btn" data-filter="guides">{lang === 'en' ? 'Guides' : lang === 'es' ? 'Guías' : 'Guides'}</button>
             <button class="filter-btn" data-filter="jobs">{lang === 'en' ? 'Jobs' : lang === 'es' ? 'Trabajos' : 'Métiers'}</button>
-            <button class="filter-btn" data-filter="commands">{lang === 'en' ? 'Commands' : lang === 'es' ? 'Comandos' : 'Commandes'}</button>
             <button class="filter-btn" data-filter="faq">{lang === 'en' ? 'FAQ' : lang === 'es' ? 'Preguntas frecuentes' : 'FAQ'}</button>
           </div>
 
@@ -440,32 +434,42 @@ const langPrefix = lang === 'fr' ? '' : `/${lang}`;
 
     <script>
       // Fonction pour changer la langue en restant sur la même page
-      function switchLanguage(newLang) {
-        event.preventDefault();
+      // @ts-ignore
+      window.switchLanguage = function switchLanguage(newLang, event) {
+        if (event) {
+          event.preventDefault();
+        }
+        
         let currentPath = window.location.pathname;
-        let newPath = '';
-
-        // Supprimer le préfixe de langue actuel
-        if (currentPath.startsWith('/en/')) {
-          currentPath = currentPath.substring(3);
-        } else if (currentPath.startsWith('/es/')) {
-          currentPath = currentPath.substring(3);
-        } else if (currentPath.startsWith('/fr/')) {
-          currentPath = currentPath.substring(3);
+        
+        // Supprimer le trailing slash si présent (sauf pour la racine)
+        if (currentPath.endsWith('/') && currentPath !== '/') {
+          currentPath = currentPath.slice(0, -1);
         }
-
-        // Ajouter le nouveau préfixe
+        
+        // Extraire le chemin sans le préfixe de langue
+        let basePath = currentPath;
+        if (currentPath.startsWith('/en/') || currentPath === '/en') {
+          basePath = currentPath.substring(3) || '/';
+        } else if (currentPath.startsWith('/es/') || currentPath === '/es') {
+          basePath = currentPath.substring(3) || '/';
+        }
+        
+        // Construire le nouveau chemin avec la langue sélectionnée
+        let newPath;
         if (newLang === 'fr') {
-          newPath = currentPath === '/' ? '/' : currentPath;
+          newPath = basePath;
         } else {
-          newPath = '/' + newLang + (currentPath === '/' ? '/' : currentPath);
+          newPath = '/' + newLang + basePath;
         }
-
+        
+        // Rediriger vers le nouveau chemin
         window.location.href = newPath;
       }
 
       // Fonctions pour la recherche
-      function openSearchModal() {
+      // @ts-ignore
+      window.openSearchModal = function openSearchModal() {
         console.log('openSearchModal() appelée');
         const modal = document.getElementById('searchModal');
         console.log('Modal trouvée:', modal);
@@ -486,7 +490,8 @@ const langPrefix = lang === 'fr' ? '' : `/${lang}`;
         }
       }
 
-      function closeSearchModal() {
+      // @ts-ignore
+      window.closeSearchModal = function closeSearchModal() {
         console.log('closeSearchModal() appelée');
         const modal = document.getElementById('searchModal');
         console.log('Modal trouvée pour fermeture:', modal);

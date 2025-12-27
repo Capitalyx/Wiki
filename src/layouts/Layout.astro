@@ -142,9 +142,9 @@ const langPrefix = lang === 'fr' ? '' : `/${lang}`;
           <div class="footer-section">
             <h4 class="footer-title">{lang === 'en' ? 'Languages' : lang === 'es' ? 'Idiomas' : 'Langues'}</h4>
             <ul class="footer-links">
-              <li><a href="/" class="footer-link">{lang === 'en' ? 'French' : lang === 'es' ? 'Francés' : 'Français'}</a></li>
-              <li><a href="/en/" class="footer-link">{lang === 'en' ? 'English' : lang === 'es' ? 'Inglés' : 'Anglais'}</a></li>
-              <li><a href="/es/" class="footer-link">{lang === 'en' ? 'Spanish' : lang === 'es' ? 'Español' : 'Espagnol'}</a></li>
+              <li><a href="#" onclick="switchLanguage('fr')" class="footer-link">{lang === 'en' ? 'French' : lang === 'es' ? 'Francés' : 'Français'}</a></li>
+              <li><a href="#" onclick="switchLanguage('en')" class="footer-link">{lang === 'en' ? 'English' : lang === 'es' ? 'Inglés' : 'Anglais'}</a></li>
+              <li><a href="#" onclick="switchLanguage('es')" class="footer-link">{lang === 'en' ? 'Spanish' : lang === 'es' ? 'Español' : 'Espagnol'}</a></li>
             </ul>
           </div>
         </div>
@@ -439,6 +439,31 @@ const langPrefix = lang === 'fr' ? '' : `/${lang}`;
 </style>
 
     <script>
+      // Fonction pour changer la langue en restant sur la même page
+      function switchLanguage(newLang) {
+        event.preventDefault();
+        let currentPath = window.location.pathname;
+        let newPath = '';
+
+        // Supprimer le préfixe de langue actuel
+        if (currentPath.startsWith('/en/')) {
+          currentPath = currentPath.substring(3);
+        } else if (currentPath.startsWith('/es/')) {
+          currentPath = currentPath.substring(3);
+        } else if (currentPath.startsWith('/fr/')) {
+          currentPath = currentPath.substring(3);
+        }
+
+        // Ajouter le nouveau préfixe
+        if (newLang === 'fr') {
+          newPath = currentPath === '/' ? '/' : currentPath;
+        } else {
+          newPath = '/' + newLang + (currentPath === '/' ? '/' : currentPath);
+        }
+
+        window.location.href = newPath;
+      }
+
       // Fonctions pour la recherche
       function openSearchModal() {
         console.log('openSearchModal() appelée');

@@ -1,49 +1,109 @@
-# Starlight Starter Kit: Basics
+<div align="center">
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+# 📚 Capitalyx Wiki
+
+**Le wiki officiel du serveur Capitalyx**
+
+[![Astro](https://img.shields.io/badge/Astro-5.16-BC52EE?logo=astro&logoColor=white)](https://astro.build)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+[🇫🇷 Français](#) • [🇬🇧 English](#) • [🇪🇸 Español](#)
+
+</div>
+
+---
+
+## ✨ Fonctionnalités
+
+- 🌍 **Multilingue** — Disponible en Français, Anglais et Espagnol
+- 🔍 **Recherche avancée** — Recherche instantanée avec filtres par catégorie
+- 📱 **Responsive** — Design adapté mobile, tablette et desktop
+- 🎨 **Design moderne** — Interface élégante avec thème sombre
+- ⚡ **Performant** — Site statique ultra-rapide avec Astro
+
+## 📖 Contenu
+
+| Section | Description |
+|---------|-------------|
+| 📜 **Règlement** | Toutes les règles du serveur |
+| 📘 **Guides** | Tutoriels pour bien débuter |
+| 💼 **Métiers** | Liste des métiers disponibles |
+| 💻 **Commandes** | Référence des commandes |
+| ❓ **FAQ** | Questions fréquentes |
+
+## 🚀 Installation
+
+```bash
+# Cloner le repository
+git clone https://github.com/Capitalyx/Wiki.git
+cd Wiki
+
+# Installer les dépendances
+npm install
+
+# Lancer le serveur de développement
+npm run dev
+```
+
+Le site sera disponible sur `http://localhost:4321`
+
+## 📁 Structure du projet
 
 ```
-npm create astro@latest -- --template starlight
-```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro + Starlight project, you'll see the following folders and files:
-
-```
-.
-├── public/
+Wiki/
+├── public/              # Assets statiques (images, favicon)
+│   └── assets/
+│       └── img/
 ├── src/
-│   ├── assets/
-│   ├── content/
-│   │   └── docs/
-│   └── content.config.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
+│   ├── layouts/         # Layout principal
+│   ├── pages/           # Pages du site
+│   │   ├── en/          # Pages anglaises
+│   │   ├── es/          # Pages espagnoles
+│   │   └── jobs/        # Pages des métiers
+│   └── styles/          # Fichiers CSS
+├── astro.config.mjs     # Configuration Astro
+└── package.json
 ```
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+## 🛠️ Scripts disponibles
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
+| Commande | Description |
+|----------|-------------|
+| `npm run dev` | Lance le serveur de développement |
+| `npm run build` | Compile le site pour la production |
+| `npm run preview` | Prévisualise le build de production |
 
-Static assets, like favicons, can be placed in the `public/` directory.
+## 🌐 Déploiement
 
-## 🧞 Commands
+Le site est automatiquement déployé via GitHub Actions à chaque push sur la branche `main`.
 
-All commands are run from the root of the project, from a terminal:
+```bash
+# Build de production
+npm run build
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+# Les fichiers sont générés dans ./dist/
+```
 
-## 👀 Want to learn more?
+## 🤝 Contribution
 
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+Les contributions sont les bienvenues ! 
+
+1. 🍴 Fork le projet
+2. 🔧 Crée ta branche (`git checkout -b feature/ma-feature`)
+3. 💾 Commit tes changements (`git commit -m 'Ajout d'une feature'`)
+4. 📤 Push sur la branche (`git push origin feature/ma-feature`)
+5. 📝 Ouvre une Pull Request
+
+## 📄 Licence
+
+Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
+---
+
+<div align="center">
+
+**Créé avec ❤️ par Arkyan & SmashBalloon**
+
+[Discord](https://discord.gg/capitalyx) • [Site Web](https://capitalyx.com)
+
+</div>

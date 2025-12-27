@@ -139,13 +139,6 @@ window.searchData = [
         keywords: ["train", "conducteur", "ferroviaire", "transport"]
     },
     {
-        title: "Chauffeur de Camion",
-        category: "jobs",
-        description: "Transport de marchandises et livraisons longue distance.",
-        url: "/jobs/truckdriver",
-        keywords: ["camion", "truck", "marchandises", "livraison", "fret"]
-    },
-    {
         title: "Pilote d'Avion",
         category: "jobs",
         description: "Transport aérien de passagers et de fret.",

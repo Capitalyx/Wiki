@@ -48,6 +48,135 @@
 
 /* Content Section */
 .content-section {
+  padding: 3rem 0;
+}
+
+/* Commands Section */
+.commands-section {
+  padding: 4rem 0;
+  min-height: calc(100vh - 300px);
+}
+
+.commands-notice {
+  background: var(--card-bg);
+  border-left: 4px solid var(--accent-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+}
+
+.commands-notice i {
+  font-size: 1.5rem;
+  color: var(--accent-color);
+  flex-shrink: 0;
+}
+
+.commands-notice p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.commands-notice strong {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.commands-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.command-card {
+  background: var(--surface-color);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.command-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-color);
+}
+
+.command-key {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.command-key i {
+  font-size: 1.2rem;
+  color: var(--accent-color);
+}
+
+.command-key .key {
+  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.25rem;
+  min-width: 60px;
+  text-align: center;
+  box-shadow: var(--shadow-red);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.command-description {
+  flex: 1;
+}
+
+.command-description h3 {
+  color: var(--accent-color);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+}
+
+.command-description p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Responsive pour la nouvelle section */
+@media (max-width: 768px) {
+  .commands-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .command-card {
+    padding: 1.5rem;
+  }
+
+  .commands-notice {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.25rem;
+  }
+}
+
+/* Content Section (autres styles existants) */
+.content-section-old {
   padding: 4rem 0;
 }
 

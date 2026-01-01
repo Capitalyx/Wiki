@@ -1,0 +1,77 @@
+---
+import Layout from "../../layouts/Layout.astro"
+---
+
+<Layout title="Commands" description="List of server commands and keys">
+    <section class="breadcrumb">
+        <div class="container">
+            <nav class="breadcrumb-nav">
+                <div class="breadcrumb-item">
+                    <i class="fas fa-home breadcrumb-icon"></i>
+                    <a href="/en/">Home</a>
+                </div>
+                <span class="breadcrumb-separator">
+                    <i class="fas fa-chevron-right"></i>
+                </span>
+                <div class="breadcrumb-item active">
+                    <i class="fas fa-keyboard breadcrumb-icon"></i>
+                    <span>Commands</span>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <section class="page-hero">
+            <div class="container">
+                <h1 class="page-title">
+                    <i class="fas fa-keyboard"></i>
+                    Commands and Keys
+                </h1>
+                <p class="page-description">
+                    List of available keys and commands on the server
+                </p>
+            </div>
+        </section>
+
+        <section class="commands-section">
+            <div class="container">
+                <div class="commands-notice">
+                    <i class="fas fa-info-circle"></i>
+                    <p>All keys below can be modified in the game: <strong>Settings → Key Bindings → FiveM</strong></p>
+                </div>
+
+                <div class="commands-grid">
+                    <div class="command-card">
+                        <div class="command-key">
+                            <i class="fas fa-keyboard"></i>
+                            <span class="key">TAB</span>
+                        </div>
+                        <div class="command-description">
+                            <h3>Inventory</h3>
+                            <p>Open inventory</p>
+                        </div>
+                    </div>
+
+                    <div class="command-card">
+                        <div class="command-key">
+                            <i class="fas fa-keyboard"></i>
+                            <span class="key">B</span>
+                        </div>
+                        <div class="command-description">
+                            <h3>Vehicle Trunk</h3>
+                            <p>Open the nearest vehicle trunk</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <link rel="stylesheet" href="/styles/commands.css" />
+</Layout>
+
+<style>
+    @import url("../../styles/commands.css");
+</style>

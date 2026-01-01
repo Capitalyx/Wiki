@@ -62,6 +62,11 @@ const langPrefix = lang === 'fr' ? '' : `/${lang}`;
             <li class="nav-item">
               <a href={`${langPrefix}/faq`} class="nav-link">FAQ</a>
             </li>
+            <li class="nav-item">
+              <a href={`${langPrefix}/commands`} class="nav-link">
+                {lang === 'en' ? 'Commands' : lang === 'es' ? 'Comandos' : 'Commandes'}
+              </a>
+            </li>
           </ul>
           <!-- Bouton de recherche -->
           <div class="header-actions">

@@ -39,10 +39,10 @@ git clone https://github.com/Capitalyx/Wiki.git
 cd Wiki
 
 # Installer les dépendances
-npm install
+bun install
 
 # Lancer le serveur de développement
-npm run dev
+bun run dev
 ```
 
 Le site sera disponible sur `http://localhost:4321`
@@ -69,9 +69,9 @@ Wiki/
 
 | Commande | Description |
 |----------|-------------|
-| `npm run dev` | Lance le serveur de développement |
-| `npm run build` | Compile le site pour la production |
-| `npm run preview` | Prévisualise le build de production |
+| `bun run dev` | Lance le serveur de développement |
+| `bun run build` | Compile le site pour la production |
+| `bun run preview` | Prévisualise le build de production |
 
 ## 🌐 Déploiement
 
@@ -79,7 +79,7 @@ Le site est automatiquement déployé via GitHub Actions à chaque push sur la b
 
 ```bash
 # Build de production
-npm run build
+bun run build
 
 # Les fichiers sont générés dans ./dist/
 ```

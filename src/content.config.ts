@@ -18,6 +18,7 @@ export const collections = {
 			job: z.string(),
 			generatedAt: z.string(),
 			config: z.record(
+				z.string(),
 				z.object({
 					value: z.unknown(),
 					source: z.string().optional(),

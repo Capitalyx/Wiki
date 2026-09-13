@@ -203,18 +203,21 @@ const sections = buildSections(config as Record<string, { value: unknown; source
 						<td>
 							{row.cell.kind === 'text' ? (
 								row.cell.text
-							) : (
-								<table class="jobs-data-nested">
-									<thead>
-										<tr>{row.cell.columns.map((c) => <th>{humanize(c)}</th>)}</tr>
-									</thead>
-									<tbody>
-										{row.cell.rows.map((r) => (
-											<tr>{row.cell.columns.map((c) => <td>{prettyValue(r[c])}</td>)}</tr>
-										))}
-									</tbody>
-								</table>
-							)}
+							) : (() => {
+								const cell = row.cell;
+								return (
+									<table class="jobs-data-nested">
+										<thead>
+											<tr>{cell.columns.map((c) => <th>{humanize(c)}</th>)}</tr>
+										</thead>
+										<tbody>
+											{cell.rows.map((r) => (
+												<tr>{cell.columns.map((c) => <td>{prettyValue(r[c])}</td>)}</tr>
+											))}
+										</tbody>
+									</table>
+								);
+							})()}
 						</td>
 					</tr>
 				))}

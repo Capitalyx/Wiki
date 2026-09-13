@@ -3,17 +3,17 @@ title: Jobs
 description: Discover all the jobs available on Capitalyx
 ---
 
-import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import JobCard from '../../../../components/JobCard.astro';
 
 Discover all the jobs available on Capitalyx. Each page details how to get started and live pricing/rewards straight from the server.
 
-<CardGrid>
-	<LinkCard title="Bus Driver" description="Public transport for citizens" href="/en/jobs/busdriver/" />
-	<LinkCard title="Helicopter Pilot" description="Air transport and special missions" href="/en/jobs/helicopterdriver/" />
-	<LinkCard title="EMS / Paramedic" description="Emergency medical services" href="/en/jobs/ems/" />
-	<LinkCard title="Taxi Driver" description="Private passenger transport" href="/en/jobs/cab/" />
-	<LinkCard title="Carrier" description="Package delivery and transport" href="/en/jobs/carrier/" />
-	<LinkCard title="Train Conductor" description="Driving trains" href="/en/jobs/trainconductor/" />
-	<LinkCard title="Mechanic" description="Vehicle repair and towing" href="/en/jobs/mechanic/" />
-	<LinkCard title="Waste Manager" description="Waste collection and recycling" href="/en/jobs/wastemanager/" />
-</CardGrid>
+<div class="job-card-grid">
+	<JobCard icon="bus" title="Bus Driver" description="Public transport for citizens" href="/en/jobs/busdriver/" />
+	<JobCard icon="helicopter" title="Helicopter Pilot" description="Air transport and special missions" href="/en/jobs/helicopterdriver/" />
+	<JobCard icon="ems" title="EMS / Paramedic" description="Emergency medical services" href="/en/jobs/ems/" />
+	<JobCard icon="taxi" title="Taxi Driver" description="Private passenger transport" href="/en/jobs/cab/" />
+	<JobCard icon="carrier" title="Carrier" description="Package delivery and transport" href="/en/jobs/carrier/" />
+	<JobCard icon="trainconductor" title="Train Conductor" description="Driving trains" href="/en/jobs/trainconductor/" />
+	<JobCard icon="mechanic" title="Mechanic" description="Vehicle repair and towing" href="/en/jobs/mechanic/" />
+	<JobCard icon="wastemanager" title="Waste Manager" description="Waste collection and recycling" href="/en/jobs/wastemanager/" />
+</div>

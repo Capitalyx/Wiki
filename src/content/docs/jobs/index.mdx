@@ -1,19 +1,19 @@
 ---
 title: Métiers
-description: Découvrez tous les métiers disponibles sur Capitalyx
+description: Découvre tous les métiers disponibles sur Capitalyx
 ---
 
-import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import JobCard from '../../../components/JobCard.astro';
 
 Découvrez tous les métiers disponibles sur Capitalyx. Chaque page détaille comment commencer et les tarifs/récompenses en direct depuis le serveur.
 
-<CardGrid>
-	<LinkCard title="Chauffeur de Bus" description="Transport public des citoyens" href="/jobs/busdriver/" />
-	<LinkCard title="Pilote d'Hélicoptère" description="Transport aérien et missions spéciales" href="/jobs/helicopterdriver/" />
-	<LinkCard title="EMS / Ambulancier" description="Services médicaux d'urgence" href="/jobs/ems/" />
-	<LinkCard title="Chauffeur de Taxi" description="Transport privé de passagers" href="/jobs/cab/" />
-	<LinkCard title="Livreur" description="Livraison et transport de colis" href="/jobs/carrier/" />
-	<LinkCard title="Conducteur de Train" description="Conduite de trains" href="/jobs/trainconductor/" />
-	<LinkCard title="Mécanicien" description="Réparation et dépannage de véhicules" href="/jobs/mechanic/" />
-	<LinkCard title="Éboueur" description="Collecte et recyclage des déchets" href="/jobs/wastemanager/" />
-</CardGrid>
+<div class="job-card-grid">
+	<JobCard icon="bus" title="Chauffeur de Bus" description="Transport public des citoyens" href="/jobs/busdriver/" />
+	<JobCard icon="helicopter" title="Pilote d'Hélicoptère" description="Transport aérien et missions spéciales" href="/jobs/helicopterdriver/" />
+	<JobCard icon="ems" title="EMS / Ambulancier" description="Services médicaux d'urgence" href="/jobs/ems/" />
+	<JobCard icon="taxi" title="Chauffeur de Taxi" description="Transport privé de passagers" href="/jobs/cab/" />
+	<JobCard icon="carrier" title="Livreur" description="Livraison et transport de colis" href="/jobs/carrier/" />
+	<JobCard icon="trainconductor" title="Conducteur de Train" description="Conduite de trains" href="/jobs/trainconductor/" />
+	<JobCard icon="mechanic" title="Mécanicien" description="Réparation et dépannage de véhicules" href="/jobs/mechanic/" />
+	<JobCard icon="wastemanager" title="Éboueur" description="Collecte et recyclage des déchets" href="/jobs/wastemanager/" />
+</div>

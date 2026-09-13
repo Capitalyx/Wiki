@@ -1,0 +1,34 @@
+---
+// Icônes Lucide pour la grille des métiers (voir @lucide/astro).
+import { Ambulance, Bus, CarTaxiFront, Helicopter, Recycle, TrainFront, Truck, Wrench } from '@lucide/astro';
+
+interface Props {
+	name:
+		| 'bus'
+		| 'taxi'
+		| 'helicopter'
+		| 'ems'
+		| 'carrier'
+		| 'trainconductor'
+		| 'mechanic'
+		| 'wastemanager';
+	class?: string;
+}
+
+const { name, class: className } = Astro.props;
+
+const icons = {
+	bus: Bus,
+	taxi: CarTaxiFront,
+	helicopter: Helicopter,
+	ems: Ambulance,
+	carrier: Truck,
+	trainconductor: TrainFront,
+	mechanic: Wrench,
+	wastemanager: Recycle,
+};
+
+const IconComponent = icons[name];
+---
+
+<IconComponent class={className} stroke-width={1.5} aria-hidden="true" />

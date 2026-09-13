@@ -1,0 +1,82 @@
+---
+import JobIcon from './JobIcon.astro';
+
+interface Props {
+	title: string;
+	description: string;
+	href: string;
+	icon: Parameters<typeof JobIcon>[0]['name'];
+}
+
+const { title, description, href, icon } = Astro.props;
+---
+
+<div class="job-card">
+	<a href={href}>
+		<JobIcon name={icon} class="job-card-icon" />
+		<span class="job-card-body">
+			<span class="job-card-title">{title}</span>
+			<span class="job-card-description">{description}</span>
+		</span>
+	</a>
+</div>
+
+<style>
+	.job-card {
+		height: 100%;
+		min-height: 6.5rem;
+		border: 1px solid var(--sl-color-gray-5);
+		border-radius: 0.5rem;
+		box-shadow: var(--sl-shadow-sm);
+	}
+
+	.job-card a {
+		display: flex;
+		align-items: center;
+		height: 100%;
+		box-sizing: border-box;
+		gap: 0.9rem;
+		padding: 1rem;
+		text-decoration: none;
+		color: inherit;
+	}
+
+	.job-card-icon {
+		flex: 0 0 auto;
+		width: 2rem;
+		height: 2rem;
+		color: var(--cpx-gold-500);
+	}
+
+	.job-card-body {
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+		min-width: 0;
+	}
+
+	.job-card-title {
+		color: var(--sl-color-white);
+		font-weight: 600;
+		font-size: var(--sl-text-lg);
+		line-height: var(--sl-line-height-headings);
+	}
+
+	.job-card-description {
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		overflow: hidden;
+		color: var(--sl-color-gray-3);
+		line-height: 1.5;
+	}
+
+	.job-card:hover {
+		background: var(--sl-color-gray-7, var(--sl-color-gray-6));
+		border-color: var(--sl-color-gray-2);
+	}
+
+	.job-card:hover .job-card-icon {
+		color: var(--cpx-gold-400);
+	}
+</style>

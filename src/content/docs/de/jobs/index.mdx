@@ -3,17 +3,17 @@ title: Berufe
 description: Entdecke alle verfügbaren Berufe auf Capitalyx
 ---
 
-import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import JobCard from '../../../../components/JobCard.astro';
 
 Entdecke alle verfügbaren Berufe auf Capitalyx. Jede Seite erklärt, wie man startet, und zeigt die aktuellen Tarife/Belohnungen direkt vom Server.
 
-<CardGrid>
-	<LinkCard title="Busfahrer" description="Öffentlicher Personentransport" href="/de/jobs/busdriver/" />
-	<LinkCard title="Hubschrauberpilot" description="Lufttransport und Spezialmissionen" href="/de/jobs/helicopterdriver/" />
-	<LinkCard title="EMS / Sanitäter" description="Medizinischer Notdienst" href="/de/jobs/ems/" />
-	<LinkCard title="Taxifahrer" description="Privater Personentransport" href="/de/jobs/cab/" />
-	<LinkCard title="Zusteller" description="Lieferung und Transport von Paketen" href="/de/jobs/carrier/" />
-	<LinkCard title="Zugführer" description="Züge fahren" href="/de/jobs/trainconductor/" />
-	<LinkCard title="Mechaniker" description="Fahrzeugreparatur und Abschleppen" href="/de/jobs/mechanic/" />
-	<LinkCard title="Müllmanager" description="Müllabfuhr und Recycling" href="/de/jobs/wastemanager/" />
-</CardGrid>
+<div class="job-card-grid">
+	<JobCard icon="bus" title="Busfahrer" description="Öffentlicher Personentransport" href="/de/jobs/busdriver/" />
+	<JobCard icon="helicopter" title="Hubschrauberpilot" description="Lufttransport und Spezialmissionen" href="/de/jobs/helicopterdriver/" />
+	<JobCard icon="ems" title="EMS / Sanitäter" description="Medizinischer Notdienst" href="/de/jobs/ems/" />
+	<JobCard icon="taxi" title="Taxifahrer" description="Privater Personentransport" href="/de/jobs/cab/" />
+	<JobCard icon="carrier" title="Zusteller" description="Lieferung und Transport von Paketen" href="/de/jobs/carrier/" />
+	<JobCard icon="trainconductor" title="Zugführer" description="Züge fahren" href="/de/jobs/trainconductor/" />
+	<JobCard icon="mechanic" title="Mechaniker" description="Fahrzeugreparatur und Abschleppen" href="/de/jobs/mechanic/" />
+	<JobCard icon="wastemanager" title="Müllmanager" description="Müllabfuhr und Recycling" href="/de/jobs/wastemanager/" />
+</div>

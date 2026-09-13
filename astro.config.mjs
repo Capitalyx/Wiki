@@ -89,7 +89,7 @@ export default defineConfig({
 						es: 'Trabajos',
 						de: 'Berufe',
 					},
-					autogenerate: { directory: 'jobs' },
+					items: [{ autogenerate: { directory: 'jobs' } }],
 				},
 				{
 					label: 'Commandes',

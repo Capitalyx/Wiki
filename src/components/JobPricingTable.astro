@@ -32,8 +32,48 @@ const generatedAtFormatted = new Date(generatedAt).toLocaleString(i18n.dateLocal
 	timeStyle: 'short',
 });
 
+// Traductions des clés de paramètres présentes dans les JSON de wiki-data
+// (générés côté serveur FiveM, donc toujours en anglais/camelCase). Les clés
+// absentes d'ici (ex: noms de véhicules comme "tourbus", "flatbed3") restent
+// affichées telles quelles, juste mises en forme.
+const PARAM_LABELS: Record<string, Record<'fr' | 'en' | 'es', string>> = {
+	pricing: { fr: 'Tarifs', en: 'Pricing', es: 'Tarifas' },
+	reward: { fr: 'Récompense', en: 'Reward', es: 'Recompensa' },
+	baseFare: { fr: 'Tarif de base', en: 'Base fare', es: 'Tarifa base' },
+	fareLevelExponent: { fr: 'Exposant de niveau du tarif', en: 'Fare level exponent', es: 'Exponente de nivel de tarifa' },
+	fareVarianceMax: { fr: 'Variance max. du tarif', en: 'Max fare variance', es: 'Varianza máx. de tarifa' },
+	baseXp: { fr: 'XP de base', en: 'Base XP', es: 'XP base' },
+	xpVarianceMax: { fr: "Variance max. d'XP", en: 'Max XP variance', es: 'Varianza máx. de XP' },
+	defaultVehicleMultiplier: { fr: 'Multiplicateur véhicule par défaut', en: 'Default vehicle multiplier', es: 'Multiplicador de vehículo por defecto' },
+	vehicleMultipliers: { fr: 'Multiplicateurs par véhicule', en: 'Vehicle multipliers', es: 'Multiplicadores por vehículo' },
+	basePay: { fr: 'Paie de base', en: 'Base pay', es: 'Pago base' },
+	distanceMultiplier: { fr: 'Multiplicateur de distance', en: 'Distance multiplier', es: 'Multiplicador de distancia' },
+	timeBonus: { fr: 'Bonus de temps', en: 'Time bonus', es: 'Bonificación de tiempo' },
+	maxTimeBonus: { fr: 'Bonus de temps max.', en: 'Max time bonus', es: 'Bonificación máx. de tiempo' },
+	xpBase: { fr: 'XP de base', en: 'Base XP', es: 'XP base' },
+	endOfServiceBonusMultiplier: { fr: 'Multiplicateur de bonus de fin de service', en: 'End-of-service bonus multiplier', es: 'Multiplicador de bono de fin de servicio' },
+	streakFareBonusPerPoint: { fr: 'Bonus de tarif par point de série', en: 'Streak fare bonus per point', es: 'Bono de tarifa por punto de racha' },
+	fareUnit: { fr: 'Unité de tarif', en: 'Fare unit', es: 'Unidad de tarifa' },
+	fareVarianceRange: { fr: 'Plage de variance du tarif', en: 'Fare variance range', es: 'Rango de varianza de tarifa' },
+	baseXpPerMultiplier: { fr: 'XP de base par multiplicateur', en: 'Base XP per multiplier', es: 'XP base por multiplicador' },
+	xpVarianceRange: { fr: "Plage de variance d'XP", en: 'XP variance range', es: 'Rango de varianza de XP' },
+	veteranLevelThreshold: { fr: 'Seuil de niveau vétéran', en: 'Veteran level threshold', es: 'Umbral de nivel veterano' },
+	veteranBonusMultiplier: { fr: 'Multiplicateur de bonus vétéran', en: 'Veteran bonus multiplier', es: 'Multiplicador de bono veterano' },
+	routes: { fr: 'Trajets', en: 'Routes', es: 'Rutas' },
+	randomBonus: { fr: 'Bonus aléatoire', en: 'Random bonus', es: 'Bono aleatorio' },
+	fixedBonus: { fr: 'Bonus fixe', en: 'Fixed bonus', es: 'Bono fijo' },
+	xpReward: { fr: 'Récompense XP', en: 'XP reward', es: 'Recompensa de XP' },
+	nightShift: { fr: 'Service de nuit', en: 'Night shift', es: 'Turno de noche' },
+	startHour: { fr: 'Heure de début', en: 'Start hour', es: 'Hora de inicio' },
+	endHour: { fr: 'Heure de fin', en: 'End hour', es: 'Hora de fin' },
+	minLevel: { fr: 'Niveau minimum', en: 'Min level', es: 'Nivel mínimo' },
+	bonusMultiplier: { fr: 'Multiplicateur de bonus', en: 'Bonus multiplier', es: 'Multiplicador de bono' },
+	vehicleBonusMultipliers: { fr: 'Multiplicateurs de bonus par véhicule', en: 'Vehicle bonus multipliers', es: 'Multiplicadores de bono por vehículo' },
+};
+
 function humanize(key: string): string {
 	if (labels[key]) return labels[key];
+	if (PARAM_LABELS[key]) return PARAM_LABELS[key][locale];
 	return key
 		.replace(/([a-z0-9])([A-Z])/g, '$1 $2')
 		.replace(/^./, (c) => c.toUpperCase());
@@ -59,7 +99,7 @@ function isArrayOfObjects(value: unknown): value is Record<string, unknown>[] {
 }
 
 function formatNumber(value: number): string {
-	return value.toLocaleString('fr-FR');
+	return value.toLocaleString(i18n.dateLocale);
 }
 
 // Rendu texte simple (nombres, chaînes, min/max, objets plats, listes de primitives).
@@ -183,14 +223,14 @@ const sections = buildSections(config as Record<string, { value: unknown; source
 <style>
 	.jobs-data-updated {
 		font-size: 0.85rem;
-		color: var(--sl-color-gray-3);
+		color: var(--sl-color-gray-2);
 	}
 	.jobs-data-section {
 		margin-block: 1.5rem;
 	}
 	.jobs-data-source {
 		font-size: 0.75rem;
-		color: var(--sl-color-gray-4);
+		color: var(--sl-color-gray-3);
 		margin-top: 0.25rem;
 	}
 	table {

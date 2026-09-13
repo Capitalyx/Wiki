@@ -1,0 +1,81 @@
+---
+title: Foire aux questions
+description: Différentes questions posées sur le serveur Capitalyx
+---
+
+## Débuter sur le serveur
+
+### Comment puis-je rejoindre le serveur ?
+Vous devez posséder FiveM et GTA V. Recherchez « Capitalyx » dans la liste des serveurs FiveM.
+
+### Faut-il une candidature pour jouer ?
+Non, le serveur est en accès libre. Vous pouvez vous connecter directement et créer votre personnage.
+
+### Combien de personnages puis-je créer ?
+Vous pouvez créer un personnage par compte FiveM.
+
+## Gameplay
+
+### Qu'est-ce qu'un serveur tycoon ?
+Un serveur axé sur la gestion de business, les métiers et l'économie. Vous pouvez développer votre empire commercial dans une ambiance détendue.
+
+### Puis-je jouer avec mes amis ?
+Absolument ! L'entraide et la coopération sont encouragées. Vous pouvez créer des entreprises ensemble ou échanger des ressources.
+
+### Comment gagner de l'argent ?
+Choisissez un métier qui vous plaît, développez votre business, faites du commerce avec d'autres joueurs.
+
+## Technique
+
+### Le serveur lag, que faire ?
+Vérifiez votre connexion internet. Si le problème persiste, signalez-le sur Discord avec des détails précis.
+
+### J'ai perdu mes objets/argent, que faire ?
+Contactez un administrateur sur Discord avec les preuves (screenshots, vidéos) et les détails de l'incident.
+
+### Comment signaler un bug ?
+Utilisez le canal #bug-reports sur Discord avec une description détaillée et des preuves si possible.
+
+## Règles et sanctions
+
+### Que risque-t-on en cas d'infraction ?
+Selon la gravité : avertissement, kick temporaire ou bannissement définitif. Consultez la page [Règlement](/rules/) pour plus de détails.
+
+### Comment contester une sanction ?
+Ouvrez un ticket sur Discord dans la section appropriée avec vos arguments et preuves.
+
+### Peut-on faire appel d'un bannissement ?
+Oui, après un délai de réflexion. Utilisez le système de tickets Discord pour présenter votre demande d'appel.
+
+## Communauté
+
+### Comment rejoindre le Discord ?
+Le lien Discord est disponible dans le jeu via la commande `/discord` ou sur notre site web.
+
+### Y a-t-il des événements organisés ?
+Oui ! Des événements économiques, concours de production, marchés spéciaux et défis communautaires sont régulièrement organisés.
+
+### Comment créer une alliance/entreprise ?
+Vous pouvez créer ou rejoindre une faction/entreprise pour bénéficier de bonus d'XP et d'autres avantages légers qui facilitent votre progression.
+
+### Quels sont les avantages des factions ?
+Les factions offrent principalement des bonus d'expérience, de légers avantages économiques et un environnement d'entraide entre membres.
+
+## Métiers & économie
+
+### Quels métiers sont disponibles ?
+Consultez la section [Métiers](/jobs/) du wiki pour la liste complète et les détails de chacun.
+
+### Peut-on échanger des ressources entre joueurs ?
+Oui ! L'échange et l'entraide sont au cœur du gameplay. Vous pouvez vendre vos productions ou aider d'autres joueurs avec vos ressources.
+
+### Comment fonctionne le système économique ?
+L'économie du serveur est fixe avec des prix et mécaniques établis. Focalisez-vous sur l'optimisation de vos productions et l'efficacité de vos métiers.
+
+## Besoin d'aide supplémentaire ?
+
+Si vous ne trouvez pas la réponse à votre question ici, n'hésitez pas à :
+
+- Poser votre question sur Discord
+- Contacter un membre du staff en jeu
+- Ouvrir un ticket de support

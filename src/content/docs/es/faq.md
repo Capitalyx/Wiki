@@ -1,0 +1,81 @@
+---
+title: Preguntas Frecuentes
+description: Diferentes preguntas realizadas sobre el servidor Capitalyx
+---
+
+## Empezar en el Servidor
+
+### ¿Cómo puedo unirme al servidor?
+Necesitas FiveM y GTA V. Busca "Capitalyx" en la lista de servidores de FiveM.
+
+### ¿Necesito una solicitud para jugar?
+No, el servidor es de acceso libre. Puedes conectarte directamente y crear tu personaje.
+
+### ¿Cuántos personajes puedo crear?
+Puedes crear un personaje por cuenta de FiveM.
+
+## Jugabilidad
+
+### ¿Qué es un servidor tycoon?
+Un servidor centrado en la gestión de negocios, los trabajos y la economía. Puedes desarrollar tu imperio comercial en un ambiente relajado.
+
+### ¿Puedo jugar con mis amigos?
+¡Por supuesto! Se fomenta la ayuda mutua y la cooperación. Puedes crear empresas juntos o intercambiar recursos.
+
+### ¿Cómo gano dinero?
+Elige un trabajo que te guste, desarrolla tu negocio, comercia con otros jugadores.
+
+## Técnico
+
+### El servidor tiene lag, ¿qué hago?
+Verifica tu conexión a internet. Si el problema persiste, repórtalo en Discord con detalles precisos.
+
+### Perdí mis objetos/dinero, ¿qué hago?
+Contacta a un administrador en Discord con pruebas (capturas de pantalla, vídeos) y los detalles del incidente.
+
+### ¿Cómo reporto un error?
+Usa el canal #bug-reports en Discord con una descripción detallada y pruebas si es posible.
+
+## Reglas y Sanciones
+
+### ¿Qué riesgo hay en caso de infracción?
+Según la gravedad: advertencia, expulsión temporal o baneo definitivo. Consulta la página de [Reglamento](/es/rules/) para más detalles.
+
+### ¿Cómo apelo una sanción?
+Abre un ticket en Discord en la sección correspondiente con tus argumentos y pruebas.
+
+### ¿Se puede apelar un baneo?
+Sí, después de un período de reflexión. Usa el sistema de tickets de Discord para presentar tu solicitud de apelación.
+
+## Comunidad
+
+### ¿Cómo me uno al Discord?
+El enlace de Discord está disponible en el juego mediante el comando `/discord` o en nuestro sitio web.
+
+### ¿Hay eventos organizados?
+¡Sí! Se organizan regularmente eventos económicos, concursos de producción, mercados especiales y desafíos comunitarios.
+
+### ¿Cómo creo una alianza/empresa?
+Puedes crear o unirte a una facción/empresa para beneficiarte de bonificaciones de XP y otras ventajas ligeras que facilitan tu progresión.
+
+### ¿Cuáles son las ventajas de las facciones?
+Las facciones ofrecen principalmente bonificaciones de experiencia, ligeras ventajas económicas y un entorno de ayuda mutua entre miembros.
+
+## Trabajos y Economía
+
+### ¿Qué trabajos están disponibles?
+Consulta la sección de [Trabajos](/es/jobs/) del wiki para ver la lista completa y los detalles de cada uno.
+
+### ¿Se pueden intercambiar recursos entre jugadores?
+¡Sí! El intercambio y la ayuda mutua son el corazón del juego. Puedes vender tu producción o ayudar a otros jugadores con tus recursos.
+
+### ¿Cómo funciona el sistema económico?
+La economía del servidor es fija, con precios y mecánicas establecidas. Concéntrate en optimizar tu producción y la eficiencia de tus trabajos.
+
+## ¿Necesitas más ayuda?
+
+Si no encuentras la respuesta a tu pregunta aquí, no dudes en:
+
+- Hacer tu pregunta en Discord
+- Contactar a un miembro del staff en el juego
+- Abrir un ticket de soporte

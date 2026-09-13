@@ -1,0 +1,212 @@
+---
+import { getEntry } from 'astro:content';
+
+interface Props {
+	job: string;
+	labels?: Record<string, string>;
+}
+
+const { job, labels = {} } = Astro.props;
+
+const entry = await getEntry('jobsData', job);
+
+if (!entry) {
+	throw new Error(
+		`Aucune donnée trouvée pour le métier "${job}" dans /srv/fivem/datas/reports/wiki-data. ` +
+		`Vérifiez que le fichier "${job}.json" existe bien.`,
+	);
+}
+
+const { generatedAt, config } = entry.data;
+
+const locale = Astro.currentLocale === 'en' ? 'en' : Astro.currentLocale === 'es' ? 'es' : 'fr';
+
+const i18n = {
+	fr: { updated: 'Dernière mise à jour des données', param: 'Paramètre', value: 'Valeur', source: 'Source', yes: 'Oui', no: 'Non', dateLocale: 'fr-FR' },
+	en: { updated: 'Data last updated', param: 'Parameter', value: 'Value', source: 'Source', yes: 'Yes', no: 'No', dateLocale: 'en-US' },
+	es: { updated: 'Última actualización de datos', param: 'Parámetro', value: 'Valor', source: 'Fuente', yes: 'Sí', no: 'No', dateLocale: 'es-ES' },
+}[locale];
+
+const generatedAtFormatted = new Date(generatedAt).toLocaleString(i18n.dateLocale, {
+	dateStyle: 'long',
+	timeStyle: 'short',
+});
+
+function humanize(key: string): string {
+	if (labels[key]) return labels[key];
+	return key
+		.replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+		.replace(/^./, (c) => c.toUpperCase());
+}
+
+function isMinMax(value: unknown): value is { min: unknown; max: unknown } {
+	return (
+		typeof value === 'object' &&
+		value !== null &&
+		!Array.isArray(value) &&
+		Object.keys(value).length === 2 &&
+		'min' in value &&
+		'max' in value
+	);
+}
+
+function isArrayOfObjects(value: unknown): value is Record<string, unknown>[] {
+	return (
+		Array.isArray(value) &&
+		value.length > 0 &&
+		value.every((item) => typeof item === 'object' && item !== null && !Array.isArray(item))
+	);
+}
+
+function formatNumber(value: number): string {
+	return value.toLocaleString('fr-FR');
+}
+
+// Rendu texte simple (nombres, chaînes, min/max, objets plats, listes de primitives).
+// Les tableaux d'objets sont gérés à part par `Cell`/`buildCell` pour produire
+// un vrai sous-tableau HTML plutôt qu'un texte aplati.
+function prettyValue(value: unknown): string {
+	if (value === null || value === undefined) return '—';
+	if (typeof value === 'number') return formatNumber(value);
+	if (typeof value === 'boolean') return value ? i18n.yes : i18n.no;
+	if (typeof value === 'string') return value;
+
+	if (isMinMax(value)) {
+		return `${prettyValue(value.min)} – ${prettyValue(value.max)}`;
+	}
+
+	if (Array.isArray(value)) {
+		return value.map((item) => prettyValue(item)).join(', ');
+	}
+
+	if (typeof value === 'object') {
+		return Object.entries(value)
+			.map(([k, v]) => `${humanize(k)} : ${prettyValue(v)}`)
+			.join(' · ');
+	}
+
+	return String(value);
+}
+
+type Cell =
+	| { kind: 'text'; text: string }
+	| { kind: 'table'; columns: string[]; rows: Record<string, unknown>[] };
+
+function buildCell(value: unknown): Cell {
+	if (isArrayOfObjects(value)) {
+		const columns = Array.from(new Set(value.flatMap((row) => Object.keys(row))));
+		return { kind: 'table', columns, rows: value };
+	}
+	return { kind: 'text', text: prettyValue(value) };
+}
+
+interface Row {
+	key: string;
+	cell: Cell;
+}
+
+interface Section {
+	key: string;
+	rows: Row[];
+	source?: string;
+}
+
+function buildSections(config: Record<string, { value: unknown; source?: string }>): Section[] {
+	const sections: Section[] = [];
+
+	for (const [sectionKey, section] of Object.entries(config)) {
+		const value = section.value;
+
+		// La valeur d'une section est presque toujours un objet plat de paramètres.
+		// Si elle est directement un tableau d'objets, on la traite comme un seul
+		// "paramètre" dont la cellule est elle-même le tableau.
+		const entries: [string, unknown][] = isArrayOfObjects(value)
+			? [[sectionKey, value]]
+			: typeof value === 'object' && value !== null
+				? Object.entries(value as Record<string, unknown>)
+				: [[sectionKey, value]];
+
+		sections.push({
+			key: sectionKey,
+			rows: entries.map(([k, v]) => ({ key: k, cell: buildCell(v) })),
+			source: section.source,
+		});
+	}
+
+	return sections;
+}
+
+const sections = buildSections(config as Record<string, { value: unknown; source?: string }>);
+---
+
+<p class="jobs-data-updated">
+	{i18n.updated} : <strong>{generatedAtFormatted}</strong>
+</p>
+
+{sections.map((section) => (
+	<div class="jobs-data-section">
+		<h3>{humanize(section.key)}</h3>
+
+		<table>
+			<thead>
+				<tr><th>{i18n.param}</th><th>{i18n.value}</th></tr>
+			</thead>
+			<tbody>
+				{section.rows.map((row) => (
+					<tr>
+						<td>{humanize(row.key)}</td>
+						<td>
+							{row.cell.kind === 'text' ? (
+								row.cell.text
+							) : (
+								<table class="jobs-data-nested">
+									<thead>
+										<tr>{row.cell.columns.map((c) => <th>{humanize(c)}</th>)}</tr>
+									</thead>
+									<tbody>
+										{row.cell.rows.map((r) => (
+											<tr>{row.cell.columns.map((c) => <td>{prettyValue(r[c])}</td>)}</tr>
+										))}
+									</tbody>
+								</table>
+							)}
+						</td>
+					</tr>
+				))}
+			</tbody>
+		</table>
+
+		{section.source && <p class="jobs-data-source">{i18n.source} : <code>{section.source}</code></p>}
+	</div>
+))}
+
+<style>
+	.jobs-data-updated {
+		font-size: 0.85rem;
+		color: var(--sl-color-gray-3);
+	}
+	.jobs-data-section {
+		margin-block: 1.5rem;
+	}
+	.jobs-data-source {
+		font-size: 0.75rem;
+		color: var(--sl-color-gray-4);
+		margin-top: 0.25rem;
+	}
+	table {
+		width: 100%;
+		border-collapse: collapse;
+	}
+	th, td {
+		border: 1px solid var(--sl-color-gray-5);
+		padding: 0.4rem 0.7rem;
+		text-align: left;
+		vertical-align: top;
+	}
+	th {
+		background: var(--sl-color-gray-6);
+	}
+	.jobs-data-nested {
+		margin: 0;
+	}
+</style>

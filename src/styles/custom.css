@@ -1,140 +1,199 @@
-/* Styles personnalisés pour le wiki Capitalyx */
+/*
+ * Thème Capitalyx pour Starlight, aligné sur le design system officiel
+ * (/srv/fivem/datas/capitalyx-design-system) : palette "cpx" (or/orange),
+ * "cpx-red" et surfaces sombres, police Roboto.
+ *
+ * Important : dans cette version de Starlight (0.37), les variables
+ * --sl-color-* sont des valeurs CSS directes (ex: un hex ou hsl()), PAS des
+ * triplets "R G B" — elles ne doivent donc jamais être ré-enveloppées dans
+ * un rgb(var(...)). C'était le bug de l'ancienne version de ce fichier.
+ */
 
 :root {
-  --sl-color-accent-low: #2d1b69;
-  --sl-color-accent: #dc2626;
-  --sl-color-accent-high: #fecaca;
-  --sl-color-white: #ffffff;
-  --sl-color-gray-1: #f8fafc;
-  --sl-color-gray-2: #f1f5f9;
-  --sl-color-gray-3: #e2e8f0;
-  --sl-color-gray-4: #cbd5e1;
-  --sl-color-gray-5: #94a3b8;
-  --sl-color-gray-6: #64748b;
-  --sl-color-black: #0f172a;
+	--sl-font: 'Roboto', var(--sl-font-system);
+
+	/* Thème sombre (défaut) */
+	--sl-color-accent-low: #733a18; /* cpx-900 */
+	--sl-color-accent: #e48e29; /* cpx-500 — or/orange de marque */
+	--sl-color-accent-high: #f5dcb3; /* cpx-200 */
+
+	--sl-color-white: #ffffff;
+	--sl-color-gray-1: #e5e7eb; /* texte principal — 11.9:1 sur le fond */
+	--sl-color-gray-2: #cbd5e1; /* texte secondaire — 9.9:1 */
+	--sl-color-gray-3: #94a3b8; /* texte tertiaire (méta, dates...) — 5.7:1 */
+	--sl-color-gray-4: #64748b; /* décoratif / non-texte — 3.1:1, ne pas utiliser pour du texte de lecture */
+	--sl-color-gray-5: #334155; /* bordures */
+	--sl-color-gray-6: #111827; /* fond nav/sidebar (gray-900) */
+	--sl-color-black: #1f2937; /* fond du contenu (surface-dark) */
+
+	/* Couleurs de marque additionnelles, utilisées par nos propres styles */
+	--cpx-gold-400: #eaa853;
+	--cpx-gold-500: #e48e29;
+	--cpx-gold-600: #d5741f;
+	--cpx-red-500: #b93235;
+	--cpx-red-600: #9b2729;
+	--cpx-card-bg: #1a1c23;
 }
 
-/* Theme sombre */
-:root[data-theme='dark'] {
-  --sl-color-accent-low: #1e1b4b;
-  --sl-color-accent: #ef4444;
-  --sl-color-accent-high: #fee2e2;
-  --sl-color-white: #0f172a;
-  --sl-color-gray-1: #1e293b;
-  --sl-color-gray-2: #334155;
-  --sl-color-gray-3: #475569;
-  --sl-color-gray-4: #64748b;
-  --sl-color-gray-5: #94a3b8;
-  --sl-color-gray-6: #cbd5e1;
-  --sl-color-black: #f8fafc;
+/* Mode clair — la DS n'en définit pas ; on prolonge la même teinte or */
+:root[data-theme='light'] {
+	--sl-color-accent-low: #f5dcb3; /* cpx-200 */
+	--sl-color-accent: #d5741f; /* cpx-600, plus contrasté sur fond clair */
+	--sl-color-accent-high: #733a18; /* cpx-900 */
+
+	--sl-color-white: #111827;
+	--sl-color-gray-1: #1f2937;
+	--sl-color-gray-2: #374151;
+	--sl-color-gray-3: #6b7280;
+	--sl-color-gray-4: #9ca3af;
+	--sl-color-gray-5: #e5e7eb;
+	--sl-color-gray-6: #f3f4f6;
+	--sl-color-black: #ffffff;
+
+	--cpx-card-bg: #ffffff;
 }
 
-/* Personnalisation du logo */
-.sl-flex {
-  gap: 1rem;
-  align-items: center;
-}
-
-/* Style pour les cartes */
-.sl-card {
-  background: linear-gradient(135deg, rgb(var(--sl-color-gray-7)), rgb(var(--sl-color-gray-6)));
-  border: 1px solid rgb(var(--sl-color-gray-5));
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.sl-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px -5px rgba(220, 38, 38, 0.3);
-}
-
-/* Style pour le hero */
-.hero > .sl-flex {
-  text-align: center;
-}
-
-.hero h1 {
-  font-size: 3rem;
-  font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 1rem;
-}
-
+/* Titre en dégradé (utilisé sur la page d'accueil) */
 .text-gradient {
-  background: linear-gradient(45deg, #dc2626, #ef4444);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+	background: linear-gradient(45deg, var(--cpx-gold-400), var(--cpx-gold-600));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
 }
 
-/* Style pour la navigation */
-.sl-sidebar-item[aria-current="page"] > .sl-sidebar-item-content {
-  background: linear-gradient(135deg, rgb(var(--sl-color-accent-low)), rgb(var(--sl-color-accent)));
-  color: white;
-  border-radius: 0.5rem;
+/* Cartes (CardGrid) — la vraie classe Starlight est `.card`, pas `.sl-card` */
+.card {
+	background: var(--cpx-card-bg);
+	border: 1px solid rgba(255, 255, 255, 0.05);
+	border-radius: 0.5rem;
+	box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Amélioration des boutons */
-.sl-link-button {
-  border-radius: 0.75rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
+.card:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 12px 30px -6px rgba(228, 142, 41, 0.25);
 }
 
-.sl-link-button[data-variant="primary"] {
-  background: linear-gradient(135deg, #dc2626, #ef4444);
-  border: none;
+/* Boutons — les vraies classes sont `.primary` / `.secondary`, pas [data-variant] */
+.sl-link-button.primary {
+	background: var(--cpx-gold-500);
+	border-color: rgba(234, 168, 83, 0.3);
+	color: white;
 }
 
-.sl-link-button[data-variant="primary"]:hover {
-  background: linear-gradient(135deg, #b91c1c, #dc2626);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+.sl-link-button.primary:hover {
+	background: var(--cpx-gold-400);
 }
 
-/* Style pour les icônes */
-.sl-icon {
-  color: rgb(var(--sl-color-accent));
+.sl-link-button.secondary {
+	background: var(--sl-color-gray-5);
+	border-color: rgba(255, 255, 255, 0.1);
+	color: white;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2rem;
-  }
-
-  .sl-card {
-    padding: 1rem;
-  }
-}
-
-/* Animation pour les cardes */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.sl-card {
-  animation: fadeInUp 0.6s ease-out;
-}
-
-/* Style pour les bannières */
+/* Bannière d'annonce */
 .sl-banner {
-  background: linear-gradient(135deg, rgba(220, 38, 38, 0.1), rgba(239, 68, 68, 0.1));
-  border: 1px solid rgba(220, 38, 38, 0.3);
-  border-radius: 0.75rem;
+	background: rgba(228, 142, 41, 0.1);
+	border-color: rgba(228, 142, 41, 0.3);
 }
 
 .sl-banner a {
-  color: rgb(var(--sl-color-accent));
-  font-weight: 600;
-  text-decoration: underline;
+	color: var(--cpx-gold-400);
+	font-weight: 600;
+}
+
+/* Centre la barre de recherche dans l'espace disponible du header
+   (Starlight l'aligne à gauche par défaut dans sa colonne flexible). */
+.header > div:has(site-search) {
+	justify-content: center;
+}
+
+/* Icône accolée à un titre — garantit qu'icône et texte restent sur la même
+   ligne (le SVG seul dans un heading pouvait finir sur sa propre ligne). */
+.heading-icon {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35em;
+	vertical-align: middle;
+}
+
+.heading-icon svg {
+	flex-shrink: 0;
+}
+
+/* Galerie d'images sur les pages métiers */
+.job-gallery {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 1rem;
+	margin-block: 1.5rem;
+}
+
+.job-gallery img {
+	display: block;
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	object-fit: cover;
+	border-radius: 0.5rem;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Images cliquables (galerie métier + carousel) — voir public/js/lightbox.js */
+.job-gallery img,
+.cpx-carousel img {
+	cursor: zoom-in;
+}
+
+.cpx-lightbox {
+	position: fixed;
+	inset: 0;
+	z-index: 100;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 2rem;
+	background: rgba(15, 17, 21, 0.9);
+	animation: cpx-lightbox-fade-in 0.15s ease-out;
+}
+
+.cpx-lightbox[hidden] {
+	display: none;
+}
+
+.cpx-lightbox img {
+	max-width: 100%;
+	max-height: 100%;
+	border-radius: 0.5rem;
+	box-shadow: 0 20px 60px -10px rgba(0, 0, 0, 0.6);
+	cursor: zoom-out;
+}
+
+.cpx-lightbox-close {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.5rem;
+	height: 2.5rem;
+	border: none;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.1);
+	color: white;
+	cursor: pointer;
+}
+
+.cpx-lightbox-close:hover {
+	background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes cpx-lightbox-fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }

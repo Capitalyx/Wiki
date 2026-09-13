@@ -4,7 +4,7 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://capitalyx.com',
+	site: 'https://capitalyx.fr',
     build: {
       format: 'directory' // URLs propres (/guides/ au lieu de /guides.html)
     },
@@ -27,16 +27,16 @@ export default defineConfig({
 					lang: 'es',
 				},
 			},
-			// logo: {
-			// 	light: '/assets/logo-light.svg',
-			// 	dark: '/assets/logo-dark.svg',
-			// 	replacesTitle: true,
-			// },
+			logo: {
+				src: './src/assets/logo.png',
+				alt: 'Capitalyx',
+				replacesTitle: false,
+			},
 			social: [
 				{
 					icon: 'discord',
 					label: 'Discord',
-					href: 'https://discord.gg/capitalyx',
+					href: 'https://discord.gg/NdWQ3XfFEn',
 				},
 			],
 			sidebar: [
@@ -100,6 +100,27 @@ export default defineConfig({
 			],
 			customCss: [
 				'./src/styles/custom.css',
+			],
+			head: [
+				{
+					tag: 'link',
+					attrs: { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+				},
+				{
+					tag: 'link',
+					attrs: { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: true },
+				},
+				{
+					tag: 'link',
+					attrs: {
+						rel: 'stylesheet',
+						href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap',
+					},
+				},
+				{
+					tag: 'script',
+					attrs: { src: '/js/lightbox.js', defer: true },
+				},
 			],
 		}),
 	],

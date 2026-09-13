@@ -49,19 +49,21 @@ Le site sera disponible sur `http://localhost:4321`
 
 ## 📁 Structure du projet
 
+Le wiki est entièrement construit avec [Starlight](https://starlight.astro.build/) : tout le contenu vit dans `src/content/docs/` en Markdown/MDX, il n'y a plus de pages `.astro` custom.
+
 ```
 Wiki/
-├── public/              # Assets statiques (images, favicon)
-│   └── assets/
-│       └── img/
+├── public/                    # Assets statiques (images, favicon)
 ├── src/
-│   ├── layouts/         # Layout principal
-│   ├── pages/           # Pages du site
-│   │   ├── en/          # Pages anglaises
-│   │   ├── es/          # Pages espagnoles
-│   │   └── jobs/        # Pages des métiers
-│   └── styles/          # Fichiers CSS
-├── astro.config.mjs     # Configuration Astro
+│   ├── content/docs/          # Tout le contenu du wiki (fr à la racine, en/, es/)
+│   │   ├── jobs/*.mdx         # Pages métiers (texte + données dynamiques)
+│   │   ├── rules.md, guides.md, commands.md, faq.md
+│   │   └── index.mdx
+│   ├── components/
+│   │   └── JobPricingTable.astro  # Rendu générique des données de métiers
+│   ├── content.config.ts      # Collections `docs` (Starlight) et `jobsData`
+│   └── styles/custom.css      # Thème Starlight personnalisé
+├── astro.config.mjs
 └── package.json
 ```
 
@@ -73,16 +75,33 @@ Wiki/
 | `bun run build` | Compile le site pour la production |
 | `bun run preview` | Prévisualise le build de production |
 
+## 📊 Données dynamiques des métiers
+
+Les pages `src/content/docs/jobs/*.mdx` affichent des tarifs/récompenses **lus directement, au moment du build**, depuis les fichiers générés automatiquement par le serveur FiveM :
+
+```
+/srv/fivem/datas/reports/wiki-data/*.json
+```
+
+Ces fichiers **ne sont pas dans ce repo** (ils vivent sur le serveur FiveM, en dehors de l'arbre git) et ne doivent jamais y être copiés. Ils sont chargés via la collection Astro `jobsData` (voir `src/content.config.ts`) et rendus par `src/components/JobPricingTable.astro`, qui affiche automatiquement toute nouvelle valeur sans qu'il soit nécessaire de modifier le Markdown.
+
+Prérequis : l'utilisateur qui build (`arkyan`) doit être dans le groupe `equipe` pour avoir accès en lecture à ce dossier.
+
 ## 🌐 Déploiement
 
-Le site est automatiquement déployé via GitHub Actions à chaque push sur la branche `main`.
+Le site est buildé **localement, sur ce même serveur** (pas de CI externe). Un rebuild est déclenché automatiquement à chaque modification des fichiers `wiki-data` grâce à des units systemd utilisateur :
+
+- `~/.config/systemd/user/wiki-rebuild.path` — surveille `/srv/fivem/datas/reports/wiki-data`
+- `~/.config/systemd/user/wiki-rebuild.service` — relance `bun run build`
 
 ```bash
-# Build de production
+# Build manuel
 bun run build
 
 # Les fichiers sont générés dans ./dist/
 ```
+
+Servir `dist/` publiquement (nginx, caddy...) est hors du périmètre de cette configuration et reste à mettre en place séparément.
 
 ## 🤝 Contribution
 

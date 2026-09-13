@@ -13,7 +13,7 @@
     "@astrojs/mdx": "4.3.13",
     "@astrojs/react": "4.4.2",
     "@astrojs/sitemap": "^3.6.0",
-    "@astrojs/starlight": "0.37.1",
+    "@astrojs/starlight": "0.37.5",
     "astro": "5.16.6",
     "fuse.js": "^7.1.0",
     "lucide-react": "^0.562.0",

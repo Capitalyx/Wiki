@@ -12,6 +12,7 @@ export default defineConfig({
 		starlight({
 			title: 'Capitalyx Wiki',
 			description: 'Wiki officiel du serveur Capitalyx',
+			favicon: '/favicon.png',
 			defaultLocale: 'root', // Français comme langue par défaut à la racine
 			locales: {
 				root: {
@@ -25,6 +26,10 @@ export default defineConfig({
 				es: {
 					label: 'Español',
 					lang: 'es',
+				},
+				de: {
+					label: 'Deutsch',
+					lang: 'de',
 				},
 			},
 			logo: {
@@ -45,6 +50,7 @@ export default defineConfig({
 					translations: {
 						en: 'Home',
 						es: 'Inicio',
+						de: 'Startseite',
 					},
 					link: '/',
 				},
@@ -53,6 +59,7 @@ export default defineConfig({
 					translations: {
 						en: 'Rules',
 						es: 'Reglas',
+						de: 'Regeln',
 					},
 					link: '/rules/',
 				},
@@ -61,6 +68,7 @@ export default defineConfig({
 					translations: {
 						en: 'Guides',
 						es: 'Guías',
+						de: 'Anleitungen',
 					},
 					items: [
 						{
@@ -68,6 +76,7 @@ export default defineConfig({
 							translations: {
 								en: 'Beginner Guide',
 								es: 'Guía para Principiantes',
+								de: 'Einsteiger-Guide',
 							},
 							link: '/guides/',
 						},
@@ -78,6 +87,7 @@ export default defineConfig({
 					translations: {
 						en: 'Jobs',
 						es: 'Trabajos',
+						de: 'Berufe',
 					},
 					autogenerate: { directory: 'jobs' },
 				},
@@ -86,6 +96,7 @@ export default defineConfig({
 					translations: {
 						en: 'Commands',
 						es: 'Comandos',
+						de: 'Befehle',
 					},
 					link: '/commands/',
 				},
@@ -94,6 +105,7 @@ export default defineConfig({
 					translations: {
 						en: 'FAQ',
 						es: 'FAQ',
+						de: 'FAQ',
 					},
 					link: '/faq/',
 				},

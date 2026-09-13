@@ -19,12 +19,17 @@ if (!entry) {
 
 const { generatedAt, config } = entry.data;
 
-const locale = Astro.currentLocale === 'en' ? 'en' : Astro.currentLocale === 'es' ? 'es' : 'fr';
+type Locale = 'fr' | 'en' | 'es' | 'de';
+const locale: Locale =
+	Astro.currentLocale === 'en' ? 'en' :
+	Astro.currentLocale === 'es' ? 'es' :
+	Astro.currentLocale === 'de' ? 'de' : 'fr';
 
 const i18n = {
 	fr: { updated: 'Dernière mise à jour des données', param: 'Paramètre', value: 'Valeur', source: 'Source', yes: 'Oui', no: 'Non', dateLocale: 'fr-FR' },
 	en: { updated: 'Data last updated', param: 'Parameter', value: 'Value', source: 'Source', yes: 'Yes', no: 'No', dateLocale: 'en-US' },
 	es: { updated: 'Última actualización de datos', param: 'Parámetro', value: 'Valor', source: 'Fuente', yes: 'Sí', no: 'No', dateLocale: 'es-ES' },
+	de: { updated: 'Daten zuletzt aktualisiert', param: 'Parameter', value: 'Wert', source: 'Quelle', yes: 'Ja', no: 'Nein', dateLocale: 'de-DE' },
 }[locale];
 
 const generatedAtFormatted = new Date(generatedAt).toLocaleString(i18n.dateLocale, {
@@ -36,39 +41,39 @@ const generatedAtFormatted = new Date(generatedAt).toLocaleString(i18n.dateLocal
 // (générés côté serveur FiveM, donc toujours en anglais/camelCase). Les clés
 // absentes d'ici (ex: noms de véhicules comme "tourbus", "flatbed3") restent
 // affichées telles quelles, juste mises en forme.
-const PARAM_LABELS: Record<string, Record<'fr' | 'en' | 'es', string>> = {
-	pricing: { fr: 'Tarifs', en: 'Pricing', es: 'Tarifas' },
-	reward: { fr: 'Récompense', en: 'Reward', es: 'Recompensa' },
-	baseFare: { fr: 'Tarif de base', en: 'Base fare', es: 'Tarifa base' },
-	fareLevelExponent: { fr: 'Exposant de niveau du tarif', en: 'Fare level exponent', es: 'Exponente de nivel de tarifa' },
-	fareVarianceMax: { fr: 'Variance max. du tarif', en: 'Max fare variance', es: 'Varianza máx. de tarifa' },
-	baseXp: { fr: 'XP de base', en: 'Base XP', es: 'XP base' },
-	xpVarianceMax: { fr: "Variance max. d'XP", en: 'Max XP variance', es: 'Varianza máx. de XP' },
-	defaultVehicleMultiplier: { fr: 'Multiplicateur véhicule par défaut', en: 'Default vehicle multiplier', es: 'Multiplicador de vehículo por defecto' },
-	vehicleMultipliers: { fr: 'Multiplicateurs par véhicule', en: 'Vehicle multipliers', es: 'Multiplicadores por vehículo' },
-	basePay: { fr: 'Paie de base', en: 'Base pay', es: 'Pago base' },
-	distanceMultiplier: { fr: 'Multiplicateur de distance', en: 'Distance multiplier', es: 'Multiplicador de distancia' },
-	timeBonus: { fr: 'Bonus de temps', en: 'Time bonus', es: 'Bonificación de tiempo' },
-	maxTimeBonus: { fr: 'Bonus de temps max.', en: 'Max time bonus', es: 'Bonificación máx. de tiempo' },
-	xpBase: { fr: 'XP de base', en: 'Base XP', es: 'XP base' },
-	endOfServiceBonusMultiplier: { fr: 'Multiplicateur de bonus de fin de service', en: 'End-of-service bonus multiplier', es: 'Multiplicador de bono de fin de servicio' },
-	streakFareBonusPerPoint: { fr: 'Bonus de tarif par point de série', en: 'Streak fare bonus per point', es: 'Bono de tarifa por punto de racha' },
-	fareUnit: { fr: 'Unité de tarif', en: 'Fare unit', es: 'Unidad de tarifa' },
-	fareVarianceRange: { fr: 'Plage de variance du tarif', en: 'Fare variance range', es: 'Rango de varianza de tarifa' },
-	baseXpPerMultiplier: { fr: 'XP de base par multiplicateur', en: 'Base XP per multiplier', es: 'XP base por multiplicador' },
-	xpVarianceRange: { fr: "Plage de variance d'XP", en: 'XP variance range', es: 'Rango de varianza de XP' },
-	veteranLevelThreshold: { fr: 'Seuil de niveau vétéran', en: 'Veteran level threshold', es: 'Umbral de nivel veterano' },
-	veteranBonusMultiplier: { fr: 'Multiplicateur de bonus vétéran', en: 'Veteran bonus multiplier', es: 'Multiplicador de bono veterano' },
-	routes: { fr: 'Trajets', en: 'Routes', es: 'Rutas' },
-	randomBonus: { fr: 'Bonus aléatoire', en: 'Random bonus', es: 'Bono aleatorio' },
-	fixedBonus: { fr: 'Bonus fixe', en: 'Fixed bonus', es: 'Bono fijo' },
-	xpReward: { fr: 'Récompense XP', en: 'XP reward', es: 'Recompensa de XP' },
-	nightShift: { fr: 'Service de nuit', en: 'Night shift', es: 'Turno de noche' },
-	startHour: { fr: 'Heure de début', en: 'Start hour', es: 'Hora de inicio' },
-	endHour: { fr: 'Heure de fin', en: 'End hour', es: 'Hora de fin' },
-	minLevel: { fr: 'Niveau minimum', en: 'Min level', es: 'Nivel mínimo' },
-	bonusMultiplier: { fr: 'Multiplicateur de bonus', en: 'Bonus multiplier', es: 'Multiplicador de bono' },
-	vehicleBonusMultipliers: { fr: 'Multiplicateurs de bonus par véhicule', en: 'Vehicle bonus multipliers', es: 'Multiplicadores de bono por vehículo' },
+const PARAM_LABELS: Record<string, Record<Locale, string>> = {
+	pricing: { fr: 'Tarifs', en: 'Pricing', es: 'Tarifas', de: 'Preise' },
+	reward: { fr: 'Récompense', en: 'Reward', es: 'Recompensa', de: 'Belohnung' },
+	baseFare: { fr: 'Tarif de base', en: 'Base fare', es: 'Tarifa base', de: 'Grundtarif' },
+	fareLevelExponent: { fr: 'Exposant de niveau du tarif', en: 'Fare level exponent', es: 'Exponente de nivel de tarifa', de: 'Tarif-Levelexponent' },
+	fareVarianceMax: { fr: 'Variance max. du tarif', en: 'Max fare variance', es: 'Varianza máx. de tarifa', de: 'Max. Tarifabweichung' },
+	baseXp: { fr: 'XP de base', en: 'Base XP', es: 'XP base', de: 'Basis-XP' },
+	xpVarianceMax: { fr: "Variance max. d'XP", en: 'Max XP variance', es: 'Varianza máx. de XP', de: 'Max. XP-Abweichung' },
+	defaultVehicleMultiplier: { fr: 'Multiplicateur véhicule par défaut', en: 'Default vehicle multiplier', es: 'Multiplicador de vehículo por defecto', de: 'Standard-Fahrzeugmultiplikator' },
+	vehicleMultipliers: { fr: 'Multiplicateurs par véhicule', en: 'Vehicle multipliers', es: 'Multiplicadores por vehículo', de: 'Fahrzeugmultiplikatoren' },
+	basePay: { fr: 'Paie de base', en: 'Base pay', es: 'Pago base', de: 'Grundgehalt' },
+	distanceMultiplier: { fr: 'Multiplicateur de distance', en: 'Distance multiplier', es: 'Multiplicador de distancia', de: 'Distanzmultiplikator' },
+	timeBonus: { fr: 'Bonus de temps', en: 'Time bonus', es: 'Bonificación de tiempo', de: 'Zeitbonus' },
+	maxTimeBonus: { fr: 'Bonus de temps max.', en: 'Max time bonus', es: 'Bonificación máx. de tiempo', de: 'Max. Zeitbonus' },
+	xpBase: { fr: 'XP de base', en: 'Base XP', es: 'XP base', de: 'Basis-XP' },
+	endOfServiceBonusMultiplier: { fr: 'Multiplicateur de bonus de fin de service', en: 'End-of-service bonus multiplier', es: 'Multiplicador de bono de fin de servicio', de: 'Schichtende-Bonusmultiplikator' },
+	streakFareBonusPerPoint: { fr: 'Bonus de tarif par point de série', en: 'Streak fare bonus per point', es: 'Bono de tarifa por punto de racha', de: 'Serienbonus pro Punkt' },
+	fareUnit: { fr: 'Unité de tarif', en: 'Fare unit', es: 'Unidad de tarifa', de: 'Tarifeinheit' },
+	fareVarianceRange: { fr: 'Plage de variance du tarif', en: 'Fare variance range', es: 'Rango de varianza de tarifa', de: 'Tarifabweichungsbereich' },
+	baseXpPerMultiplier: { fr: 'XP de base par multiplicateur', en: 'Base XP per multiplier', es: 'XP base por multiplicador', de: 'Basis-XP pro Multiplikator' },
+	xpVarianceRange: { fr: "Plage de variance d'XP", en: 'XP variance range', es: 'Rango de varianza de XP', de: 'XP-Abweichungsbereich' },
+	veteranLevelThreshold: { fr: 'Seuil de niveau vétéran', en: 'Veteran level threshold', es: 'Umbral de nivel veterano', de: 'Veteranen-Levelschwelle' },
+	veteranBonusMultiplier: { fr: 'Multiplicateur de bonus vétéran', en: 'Veteran bonus multiplier', es: 'Multiplicador de bono veterano', de: 'Veteranen-Bonusmultiplikator' },
+	routes: { fr: 'Trajets', en: 'Routes', es: 'Rutas', de: 'Strecken' },
+	randomBonus: { fr: 'Bonus aléatoire', en: 'Random bonus', es: 'Bono aleatorio', de: 'Zufallsbonus' },
+	fixedBonus: { fr: 'Bonus fixe', en: 'Fixed bonus', es: 'Bono fijo', de: 'Fixer Bonus' },
+	xpReward: { fr: 'Récompense XP', en: 'XP reward', es: 'Recompensa de XP', de: 'XP-Belohnung' },
+	nightShift: { fr: 'Service de nuit', en: 'Night shift', es: 'Turno de noche', de: 'Nachtschicht' },
+	startHour: { fr: 'Heure de début', en: 'Start hour', es: 'Hora de inicio', de: 'Startzeit' },
+	endHour: { fr: 'Heure de fin', en: 'End hour', es: 'Hora de fin', de: 'Endzeit' },
+	minLevel: { fr: 'Niveau minimum', en: 'Min level', es: 'Nivel mínimo', de: 'Mindestlevel' },
+	bonusMultiplier: { fr: 'Multiplicateur de bonus', en: 'Bonus multiplier', es: 'Multiplicador de bono', de: 'Bonusmultiplikator' },
+	vehicleBonusMultipliers: { fr: 'Multiplicateurs de bonus par véhicule', en: 'Vehicle bonus multipliers', es: 'Multiplicadores de bono por vehículo', de: 'Fahrzeug-Bonusmultiplikatoren' },
 };
 
 function humanize(key: string): string {

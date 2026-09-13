@@ -13,6 +13,14 @@ interface Props {
 
 const { slides } = Astro.props;
 const uid = Math.random().toString(36).slice(2, 9);
+
+const locale = Astro.currentLocale === 'en' ? 'en' : Astro.currentLocale === 'es' ? 'es' : Astro.currentLocale === 'de' ? 'de' : 'fr';
+const t = {
+	fr: { prev: 'Précédent', next: 'Suivant', goTo: (i: number) => `Aller à l'image ${i}` },
+	en: { prev: 'Previous', next: 'Next', goTo: (i: number) => `Go to image ${i}` },
+	es: { prev: 'Anterior', next: 'Siguiente', goTo: (i: number) => `Ir a la imagen ${i}` },
+	de: { prev: 'Zurück', next: 'Weiter', goTo: (i: number) => `Zu Bild ${i}` },
+}[locale];
 ---
 
 <div class="cpx-carousel" data-carousel={uid}>
@@ -25,15 +33,15 @@ const uid = Math.random().toString(36).slice(2, 9);
 		))}
 	</div>
 
-	<button type="button" class="cpx-carousel-btn prev" aria-label="Précédent">
+	<button type="button" class="cpx-carousel-btn prev" aria-label={t.prev}>
 		<Icon name="left-arrow" />
 	</button>
-	<button type="button" class="cpx-carousel-btn next" aria-label="Suivant">
+	<button type="button" class="cpx-carousel-btn next" aria-label={t.next}>
 		<Icon name="right-arrow" />
 	</button>
 
 	<div class="cpx-carousel-dots">
-		{slides.map((_, i) => <button type="button" class="cpx-carousel-dot" data-index={i} aria-label={`Aller à l'image ${i + 1}`} />)}
+		{slides.map((_, i) => <button type="button" class="cpx-carousel-dot" data-index={i} aria-label={t.goTo(i + 1)} />)}
 	</div>
 </div>
 

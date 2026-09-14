@@ -4,6 +4,8 @@ description: Complete guide to becoming a taxi driver on Capitalyx
 ---
 
 import JobPricingTable from '../../../../components/JobPricingTable.astro';
+import InteractiveMap from '../../../../components/InteractiveMap.astro';
+import { mapPoints } from '../../../../data/mapPoints';
 
 ## Where to find this job
 
@@ -13,9 +15,9 @@ Head to the **taxi center** to get your license and rent your first vehicle. It'
 
 ![Taxi building](/assets/img/jobs/cab/cabbuilding.webp)
 
-![Taxi center location](/assets/img/jobs/cab/cabmap.png)
-
 </div>
+
+<InteractiveMap markers={[{ ...mapPoints.cab, label: 'Downtown Cab Co.' }]} />
 
 ## How to start
 

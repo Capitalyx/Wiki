@@ -4,16 +4,12 @@ description: Guía completa para convertirte en piloto de helicóptero en Capita
 ---
 
 import JobPricingTable from '../../../../components/JobPricingTable.astro';
+import InteractiveMap from '../../../../components/InteractiveMap.astro';
+import { mapPoints } from '../../../../data/mapPoints';
 
 ## Dónde encontrar este trabajo
 
-<div class="job-gallery">
-
-![Ubicación](/assets/img/jobs/helicopter/Zone.png)
-
-![Mapa](/assets/img/jobs/helicopter/Map.png)
-
-</div>
+<InteractiveMap markers={[{ ...mapPoints.helicopter, label: 'Marina' }]} />
 
 ## Cómo empezar
 

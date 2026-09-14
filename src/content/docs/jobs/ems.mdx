@@ -4,19 +4,23 @@ description: Guide complet pour devenir EMS / Ambulancier sur Capitalyx
 ---
 
 import JobPricingTable from '../../../components/JobPricingTable.astro';
-import Carousel from '../../../components/Carousel.astro';
+import InteractiveMap from '../../../components/InteractiveMap.astro';
+import { mapPoints } from '../../../data/mapPoints';
 
 ## Où chercher ce métier
 
 Le service EMS est accessible depuis plusieurs hôpitaux de la carte.
 
-<Carousel slides={[
-	{ src: '/assets/img/jobs/ems/map1.png', alt: 'Hôpital de Sandy Shores', caption: 'Sandy Shores' },
-	{ src: '/assets/img/jobs/ems/map2.png', alt: 'Hôpital de Paleto Bay', caption: 'Paleto Bay' },
-	{ src: '/assets/img/jobs/ems/map3.png', alt: 'Hôpital de Central Los Santos', caption: 'Central Los Santos' },
-	{ src: '/assets/img/jobs/ems/map4.png', alt: 'Hôpital de Pillbox Hill', caption: 'Pillbox Hill' },
-	{ src: '/assets/img/jobs/ems/map5.png', alt: 'Hôpital de Mount Zonah', caption: 'Mount Zonah' },
-]} />
+<InteractiveMap
+	height="420px"
+	markers={[
+		{ ...mapPoints.emsSandyShores, label: 'Hôpital de Sandy Shores' },
+		{ ...mapPoints.emsPaletoBay, label: 'Hôpital de Paleto Bay' },
+		{ ...mapPoints.emsCentral, label: 'Hôpital de Central Los Santos' },
+		{ ...mapPoints.emsPillboxHill, label: 'Hôpital de Pillbox Hill' },
+		{ ...mapPoints.emsMountZonah, label: 'Hôpital de Mount Zonah' },
+	]}
+/>
 
 ## Comment commencer
 

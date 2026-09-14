@@ -4,6 +4,8 @@ description: Vollständiger Guide, um Mechaniker auf Capitalyx zu werden
 ---
 
 import JobPricingTable from '../../../../components/JobPricingTable.astro';
+import InteractiveMap from '../../../../components/InteractiveMap.astro';
+import { mapPoints } from '../../../../data/mapPoints';
 
 ## Wo man diesen Beruf findet
 
@@ -13,9 +15,9 @@ Begib dich zur Werkstatt **Benny's**, um mit der Reparatur und dem Abschleppen v
 
 ![Werkstatt Benny's](/assets/img/jobs/mechanic/BennysPhoto.png)
 
-![Standort der Werkstatt Benny's](/assets/img/jobs/mechanic/BennysMap.png)
-
 </div>
+
+<InteractiveMap markers={[{ ...mapPoints.mechanic, label: "Benny's Original Motor Works" }]} />
 
 ## Wie man startet
 

@@ -4,18 +4,14 @@ description: Complete guide to becoming a bus driver on Capitalyx
 ---
 
 import JobPricingTable from '../../../../components/JobPricingTable.astro';
+import InteractiveMap from '../../../../components/InteractiveMap.astro';
+import { mapPoints } from '../../../../data/mapPoints';
 
 ## Where to find this job
 
 Head to the **bus station** to get started.
 
-<div class="job-gallery">
-
-![Bus station location](/assets/img/jobs/busdriver/Zone.png)
-
-![Bus station map](/assets/img/jobs/busdriver/Map.png)
-
-</div>
+<InteractiveMap markers={[{ ...mapPoints.busdriver, label: 'Gare routière' }]} />
 
 ## How to start
 

@@ -4,6 +4,8 @@ description: Guide complet pour devenir mécanicien sur Capitalyx
 ---
 
 import JobPricingTable from '../../../components/JobPricingTable.astro';
+import InteractiveMap from '../../../components/InteractiveMap.astro';
+import { mapPoints } from '../../../data/mapPoints';
 
 ## Où chercher ce métier
 
@@ -13,9 +15,9 @@ Rendez-vous au garage **Benny's**, pour commencer à réparer et dépanner les v
 
 ![Garage Benny's](/assets/img/jobs/mechanic/BennysPhoto.png)
 
-![Localisation du garage Benny's](/assets/img/jobs/mechanic/BennysMap.png)
-
 </div>
+
+<InteractiveMap markers={[{ ...mapPoints.mechanic, label: "Benny's Original Motor Works" }]} />
 
 ## Comment commencer
 

@@ -4,6 +4,8 @@ description: Guide complet pour devenir éboueur sur Capitalyx
 ---
 
 import JobPricingTable from '../../../components/JobPricingTable.astro';
+import InteractiveMap from '../../../components/InteractiveMap.astro';
+import { mapPoints } from '../../../data/mapPoints';
 
 ## Où chercher ce métier
 
@@ -13,9 +15,9 @@ Rendez-vous au centre **South L.S. Recycling & Document Destruction**, au sud de
 
 ![Centre de recyclage South L.S. Recycling](/assets/img/jobs/wastemanager/WasteManagerPhoto.png)
 
-![Localisation du centre de recyclage](/assets/img/jobs/wastemanager/WasteManagerMap.png)
-
 </div>
+
+<InteractiveMap markers={[{ ...mapPoints.wastemanager, label: "South L.S. Recycling & Document Destruction" }]} />
 
 ## Comment commencer
 

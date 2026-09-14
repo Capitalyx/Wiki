@@ -4,19 +4,23 @@ description: Complete guide to becoming an EMS paramedic on Capitalyx
 ---
 
 import JobPricingTable from '../../../../components/JobPricingTable.astro';
-import Carousel from '../../../../components/Carousel.astro';
+import InteractiveMap from '../../../../components/InteractiveMap.astro';
+import { mapPoints } from '../../../../data/mapPoints';
 
 ## Where to find this job
 
 The EMS service is accessible from several hospitals on the map.
 
-<Carousel slides={[
-	{ src: '/assets/img/jobs/ems/map1.png', alt: 'Sandy Shores hospital', caption: 'Sandy Shores' },
-	{ src: '/assets/img/jobs/ems/map2.png', alt: 'Paleto Bay hospital', caption: 'Paleto Bay' },
-	{ src: '/assets/img/jobs/ems/map3.png', alt: 'Central Los Santos hospital', caption: 'Central Los Santos' },
-	{ src: '/assets/img/jobs/ems/map4.png', alt: 'Pillbox Hill hospital', caption: 'Pillbox Hill' },
-	{ src: '/assets/img/jobs/ems/map5.png', alt: 'Mount Zonah hospital', caption: 'Mount Zonah' },
-]} />
+<InteractiveMap
+	height="420px"
+	markers={[
+		{ ...mapPoints.emsSandyShores, label: 'Sandy Shores hospital' },
+		{ ...mapPoints.emsPaletoBay, label: 'Paleto Bay hospital' },
+		{ ...mapPoints.emsCentral, label: 'Central Los Santos hospital' },
+		{ ...mapPoints.emsPillboxHill, label: 'Pillbox Hill hospital' },
+		{ ...mapPoints.emsMountZonah, label: 'Mount Zonah hospital' },
+	]}
+/>
 
 ## How to start
 

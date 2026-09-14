@@ -4,18 +4,14 @@ description: Guía completa para convertirte en conductor de autobús en Capital
 ---
 
 import JobPricingTable from '../../../../components/JobPricingTable.astro';
+import InteractiveMap from '../../../../components/InteractiveMap.astro';
+import { mapPoints } from '../../../../data/mapPoints';
 
 ## Dónde encontrar este trabajo
 
 Dirígete a la **estación de autobuses** para empezar.
 
-<div class="job-gallery">
-
-![Ubicación de la estación de autobuses](/assets/img/jobs/busdriver/Zone.png)
-
-![Mapa de la estación de autobuses](/assets/img/jobs/busdriver/Map.png)
-
-</div>
+<InteractiveMap markers={[{ ...mapPoints.busdriver, label: 'Gare routière' }]} />
 
 ## Cómo empezar
 

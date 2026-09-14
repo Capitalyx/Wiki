@@ -1,0 +1,161 @@
+---
+// Carte interactive (Leaflet, CRS.Simple) affichant un fond de carte GTA V
+// complet (vue satellite) avec un ou plusieurs points d'intérêt, en
+// remplacement des captures d'écran de mini-carte utilisées auparavant.
+//
+// Les coordonnées x/y sont exprimées en pourcentage de l'image de fond
+// (/public/assets/img/map/satellite.webp), 0/0 en haut à gauche, 100/100 en
+// bas à droite. Elles ont été estimées visuellement à partir des anciennes
+// captures d'écran : n'hésite pas à les affiner si un point est mal placé.
+
+interface MarkerPoint {
+	x: number;
+	y: number;
+	label: string;
+}
+
+interface Props {
+	markers: MarkerPoint[];
+	height?: string;
+	/** Niveau de zoom additionnel par rapport au zoom "carte entière", utilisé uniquement avec un seul marqueur. */
+	zoom?: number;
+}
+
+const { markers, height = '360px', zoom = 3 } = Astro.props;
+const uid = Math.random().toString(36).slice(2, 9);
+---
+
+<div
+	class="cpx-map"
+	id={`cpx-map-${uid}`}
+	style={`height: ${height};`}
+	data-markers={JSON.stringify(markers)}
+	data-zoom={zoom}
+>
+</div>
+
+<style>
+	.cpx-map {
+		position: relative;
+		width: 100%;
+		border-radius: 0.5rem;
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		overflow: hidden;
+		margin-block: 1.5rem;
+		background: var(--cpx-card-bg);
+	}
+
+	.cpx-map :global(.leaflet-container) {
+		width: 100%;
+		height: 100%;
+		background: var(--cpx-card-bg);
+		font-family: inherit;
+	}
+
+	.cpx-map :global(.cpx-map-pin) {
+		display: block;
+		width: 26px;
+		height: 26px;
+		filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.6));
+	}
+
+	.cpx-map :global(.leaflet-popup-content-wrapper) {
+		background: var(--cpx-card-bg);
+		color: var(--sl-color-gray-1);
+		border-radius: 0.4rem;
+	}
+	.cpx-map :global(.leaflet-popup-tip) {
+		background: var(--cpx-card-bg);
+	}
+	.cpx-map :global(.leaflet-popup-content) {
+		margin: 0.5rem 0.7rem;
+		font-size: 0.85rem;
+	}
+	.cpx-map :global(.leaflet-popup-close-button) {
+		color: var(--sl-color-gray-2);
+	}
+
+	.cpx-map :global(.leaflet-control-zoom a) {
+		background: var(--cpx-card-bg);
+		color: var(--sl-color-gray-1);
+		border-color: var(--sl-color-gray-5) !important;
+	}
+	.cpx-map :global(.leaflet-control-zoom a:hover) {
+		background: var(--sl-color-gray-6);
+	}
+</style>
+
+<script>
+	import L from 'leaflet';
+	import 'leaflet/dist/leaflet.css';
+
+	interface MarkerPoint {
+		x: number;
+		y: number;
+		label: string;
+	}
+
+	const MAP_IMAGE = '/assets/img/map/satellite.webp';
+
+	const pinIcon = L.divIcon({
+		className: '',
+		html: `<svg class="cpx-map-pin" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M12 0C7.03 0 3 4.03 3 9c0 6.75 9 15 9 15s9-8.25 9-15c0-4.97-4.03-9-9-9z" fill="#e48e29" stroke="#733a18" stroke-width="1"/>
+			<circle cx="12" cy="9" r="3.5" fill="#1a1c23"/>
+		</svg>`,
+		iconSize: [26, 26],
+		iconAnchor: [13, 26],
+		popupAnchor: [0, -24],
+	});
+
+	function initMap(el: HTMLElement) {
+		if (el.dataset.initialized === 'true') return;
+		el.dataset.initialized = 'true';
+
+		const markers: MarkerPoint[] = JSON.parse(el.dataset.markers ?? '[]');
+		const extraZoom = Number(el.dataset.zoom ?? 3);
+		if (markers.length === 0) return;
+
+		const map = L.map(el, {
+			crs: L.CRS.Simple,
+			zoomSnap: 0.25,
+			attributionControl: false,
+			scrollWheelZoom: false,
+			maxBoundsViscosity: 1,
+		});
+
+		const bounds = L.latLngBounds([-100, 0], [0, 100]);
+		L.imageOverlay(MAP_IMAGE, bounds).addTo(map);
+
+		const fitZoom = map.getBoundsZoom(bounds, false);
+		map.setMinZoom(fitZoom);
+		map.setMaxZoom(fitZoom + 6);
+		map.setMaxBounds(bounds.pad(0.15));
+
+		markers.forEach((m) => {
+			L.marker([-m.y, m.x], { icon: pinIcon }).addTo(map).bindPopup(m.label);
+		});
+
+		if (markers.length === 1) {
+			map.setView([-markers[0].y, markers[0].x], Math.min(fitZoom + extraZoom, fitZoom + 6));
+		} else {
+			const markerBounds = L.latLngBounds(markers.map((m) => [-m.y, m.x] as [number, number]));
+			map.fitBounds(markerBounds, { padding: [40, 40] });
+		}
+
+		// Mode repérage de coordonnées : ajoute ?mapDebug=1 à l'URL de n'importe
+		// quelle page contenant une carte, zoome/déplace-toi jusqu'au bon endroit
+		// puis clique dessus pour récupérer le x/y à coller dans mapPoints.ts.
+		if (new URLSearchParams(location.search).has('mapDebug')) {
+			map.on('click', (e: L.LeafletMouseEvent) => {
+				const x = Math.round(e.latlng.lng * 10) / 10;
+				const y = Math.round(-e.latlng.lat * 10) / 10;
+				const snippet = `{ x: ${x}, y: ${y} }`;
+				L.popup().setLatLng(e.latlng).setContent(snippet).openOn(map);
+				console.log('[mapDebug]', snippet);
+			});
+		}
+	}
+
+	document.querySelectorAll<HTMLElement>('.cpx-map').forEach(initMap);
+</script>

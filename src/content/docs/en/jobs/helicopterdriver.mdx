@@ -4,16 +4,12 @@ description: Complete guide to becoming a helicopter pilot on Capitalyx
 ---
 
 import JobPricingTable from '../../../../components/JobPricingTable.astro';
+import InteractiveMap from '../../../../components/InteractiveMap.astro';
+import { mapPoints } from '../../../../data/mapPoints';
 
 ## Where to find this job
 
-<div class="job-gallery">
-
-![Location](/assets/img/jobs/helicopter/Zone.png)
-
-![Map](/assets/img/jobs/helicopter/Map.png)
-
-</div>
+<InteractiveMap markers={[{ ...mapPoints.helicopter, label: 'Marina' }]} />
 
 ## How to start
 

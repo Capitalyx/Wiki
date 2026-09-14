@@ -4,18 +4,14 @@ description: Vollständiger Guide, um Busfahrer auf Capitalyx zu werden
 ---
 
 import JobPricingTable from '../../../../components/JobPricingTable.astro';
+import InteractiveMap from '../../../../components/InteractiveMap.astro';
+import { mapPoints } from '../../../../data/mapPoints';
 
 ## Wo man diesen Beruf findet
 
 Begib dich zum **Busbahnhof**, um zu starten.
 
-<div class="job-gallery">
-
-![Standort des Busbahnhofs](/assets/img/jobs/busdriver/Zone.png)
-
-![Karte des Busbahnhofs](/assets/img/jobs/busdriver/Map.png)
-
-</div>
+<InteractiveMap markers={[{ ...mapPoints.busdriver, label: 'Gare routière' }]} />
 
 ## Wie man startet
 

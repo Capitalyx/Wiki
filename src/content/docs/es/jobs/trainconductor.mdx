@@ -4,6 +4,8 @@ description: Guía completa para convertirte en conductor de tren en Capitalyx
 ---
 
 import JobPricingTable from '../../../../components/JobPricingTable.astro';
+import InteractiveMap from '../../../../components/InteractiveMap.astro';
+import { mapPoints } from '../../../../data/mapPoints';
 
 ## Dónde encontrar este trabajo
 
@@ -13,9 +15,9 @@ Dirígete a la **estación central**, en el centro de la ciudad, para obtener tu
 
 ![Estación central](/assets/img/jobs/trainconductor/TramStationPhoto.png)
 
-![Ubicación de la estación central](/assets/img/jobs/trainconductor/TramStationMap.png)
-
 </div>
+
+<InteractiveMap markers={[{ ...mapPoints.trainconductor, label: 'Gare centrale' }]} />
 
 ## Cómo empezar
 

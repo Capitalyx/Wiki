@@ -4,16 +4,12 @@ description: Vollständiger Guide, um Hubschrauberpilot auf Capitalyx zu werden
 ---
 
 import JobPricingTable from '../../../../components/JobPricingTable.astro';
+import InteractiveMap from '../../../../components/InteractiveMap.astro';
+import { mapPoints } from '../../../../data/mapPoints';
 
 ## Wo man diesen Beruf findet
 
-<div class="job-gallery">
-
-![Standort](/assets/img/jobs/helicopter/Zone.png)
-
-![Karte](/assets/img/jobs/helicopter/Map.png)
-
-</div>
+<InteractiveMap markers={[{ ...mapPoints.helicopter, label: 'Marina' }]} />
 
 ## Wie man startet
 

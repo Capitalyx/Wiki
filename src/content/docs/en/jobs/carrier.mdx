@@ -4,6 +4,8 @@ description: Complete guide to becoming a package carrier on Capitalyx
 ---
 
 import JobPricingTable from '../../../../components/JobPricingTable.astro';
+import InteractiveMap from '../../../../components/InteractiveMap.astro';
+import { mapPoints } from '../../../../data/mapPoints';
 
 ## Where to find this job
 
@@ -15,9 +17,9 @@ The carrier job is available from two depots: **Paleto Bay** and the **Terminal*
 
 ![Paleto Bay depot](/assets/img/jobs/carrier/PaletoPhoto.png)
 
-![Paleto Bay depot location](/assets/img/jobs/carrier/PaletoMap.png)
-
 </div>
+
+<InteractiveMap markers={[{ ...mapPoints.carrierPaleto, label: 'Paleto Bay' }]} />
 
 **Terminal depot**
 
@@ -25,9 +27,9 @@ The carrier job is available from two depots: **Paleto Bay** and the **Terminal*
 
 ![Terminal depot](/assets/img/jobs/carrier/TerminalPhoto.png)
 
-![Terminal depot location](/assets/img/jobs/carrier/TerminalMap.png)
-
 </div>
+
+<InteractiveMap markers={[{ ...mapPoints.carrierTerminal, label: 'Terminal' }]} />
 
 ## How to start
 

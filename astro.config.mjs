@@ -8,6 +8,11 @@ export default defineConfig({
     build: {
       format: 'directory' // URLs propres (/guides/ au lieu de /guides.html)
     },
+	vite: {
+		server: {
+			allowedHosts: ['capitalyx.yazouv.lan'],
+		},
+	},
 	integrations: [
 		starlight({
 			title: 'Capitalyx Wiki',

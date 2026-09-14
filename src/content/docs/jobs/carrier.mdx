@@ -4,6 +4,8 @@ description: Guide complet pour devenir livreur de colis sur Capitalyx
 ---
 
 import JobPricingTable from '../../../components/JobPricingTable.astro';
+import InteractiveMap from '../../../components/InteractiveMap.astro';
+import { mapPoints } from '../../../data/mapPoints';
 
 ## Où chercher ce métier
 
@@ -15,9 +17,9 @@ Le métier de livreur est accessible depuis deux dépôts : celui de **Paleto Ba
 
 ![Dépôt de Paleto Bay](/assets/img/jobs/carrier/PaletoPhoto.png)
 
-![Localisation du dépôt de Paleto Bay](/assets/img/jobs/carrier/PaletoMap.png)
-
 </div>
+
+<InteractiveMap markers={[{ ...mapPoints.carrierPaleto, label: 'Paleto Bay' }]} />
 
 **Dépôt du Terminal**
 
@@ -25,9 +27,9 @@ Le métier de livreur est accessible depuis deux dépôts : celui de **Paleto Ba
 
 ![Dépôt du Terminal](/assets/img/jobs/carrier/TerminalPhoto.png)
 
-![Localisation du dépôt du Terminal](/assets/img/jobs/carrier/TerminalMap.png)
-
 </div>
+
+<InteractiveMap markers={[{ ...mapPoints.carrierTerminal, label: 'Terminal' }]} />
 
 ## Comment commencer
 

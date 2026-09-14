@@ -4,6 +4,8 @@ description: Vollständiger Guide, um Zugführer auf Capitalyx zu werden
 ---
 
 import JobPricingTable from '../../../../components/JobPricingTable.astro';
+import InteractiveMap from '../../../../components/InteractiveMap.astro';
+import { mapPoints } from '../../../../data/mapPoints';
 
 ## Wo man diesen Beruf findet
 
@@ -13,9 +15,9 @@ Begib dich zum **Hauptbahnhof**, im Stadtzentrum, um deine Führerscheinzertifiz
 
 ![Hauptbahnhof](/assets/img/jobs/trainconductor/TramStationPhoto.png)
 
-![Standort des Hauptbahnhofs](/assets/img/jobs/trainconductor/TramStationMap.png)
-
 </div>
+
+<InteractiveMap markers={[{ ...mapPoints.trainconductor, label: 'Gare centrale' }]} />
 
 ## Wie man startet
 
